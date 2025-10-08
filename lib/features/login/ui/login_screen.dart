@@ -23,6 +23,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: 20.0.h),
               Text('Welcome', style: TextStyles.font28W600),
               Text(
                 'Please enter your data to continue',

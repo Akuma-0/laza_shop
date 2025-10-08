@@ -36,6 +36,7 @@ class SignupScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 20.h),
             Text('Sign Up', style: TextStyles.font28W600),
             SizedBox(height: 50.0.h),
             SignupForm(),

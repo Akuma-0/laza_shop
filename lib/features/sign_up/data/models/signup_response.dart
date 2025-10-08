@@ -4,7 +4,7 @@ part 'signup_response.g.dart';
 
 @JsonSerializable()
 class SignupResponse {
-final String? message;
+  final String? message;
   SignupResponse({this.message});
 
   factory SignupResponse.fromJson(Map<String, dynamic> json) =>

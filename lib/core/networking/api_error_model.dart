@@ -15,6 +15,7 @@ class ApiErrorModel {
 
   Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
 }
+
 ///as the errors is a map of maps of lists i'll just ignore it for now
 /*
 {

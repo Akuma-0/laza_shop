@@ -4,25 +4,16 @@ part 'login_response.g.dart';
 
 @JsonSerializable()
 class LoginResponse {
-  UserData? userData;
+  String? accessToken;
+  String? expiresAtUtc;
+  String? refreshToken;
 
-  LoginResponse({this.userData});
+  LoginResponse({this.accessToken, this.expiresAtUtc, this.refreshToken});
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseFromJson(json);
 }
 
-@JsonSerializable()
-class UserData {
-  String? accessToken;
-  String? expiresAtUtc;
-  String? refreshToken;
-
-  UserData({this.accessToken, this.expiresAtUtc, this.refreshToken});
-
-  factory UserData.fromJson(Map<String, dynamic> json) =>
-      _$UserDataFromJson(json);
-}
 /*
 {
     "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YmY2ZTYzNi0wMzIwLTQzYjUtMDA3MC0wOGRlMDQxODkwZmEiLCJqdGkiOiI0MTg0M2E2Ny03NDEzLTQ3MjgtYjU1Ni0zYzk5NTQyNDAxMmUiLCJlbWFpbCI6ImhhbnltN21kOTBAZ21haWwuY29tIiwibmFtZSI6IkhhbnkgTW9oYW1lZCIsInJvbGVzIjoiIiwicGljdHVyZSI6IiIsImV4cCI6MTc2MDA0MzgwOCwiaXNzIjoiZXNob3AubmV0IiwiYXVkIjoiZXNob3AubmV0In0.CpqzpQHHxaLUflodWI2ZrOIpjkOFVBbGKLnyfeknkZk",

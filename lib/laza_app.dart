@@ -22,7 +22,11 @@ class LazaShopApp extends StatelessWidget {
           textTheme: TextTheme(bodyLarge: TextStyle(color: Colors.black)),
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: isOnboardingSeen ? Routes.loginScreen : Routes.onBoardingScreen,
+        initialRoute: isLoggedInUser
+            ? Routes.homeScreen
+            : isOnboardingSeen
+            ? Routes.loginScreen
+            : Routes.onBoardingScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
