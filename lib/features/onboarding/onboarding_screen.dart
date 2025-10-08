@@ -4,6 +4,8 @@ import '../../core/themes/colors_manager.dart';
 import 'widgets/lets_go_box.dart';
 
 class OnboardingScreen extends StatelessWidget {
+  const OnboardingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

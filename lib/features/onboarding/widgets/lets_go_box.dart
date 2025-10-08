@@ -27,9 +27,7 @@ class LetsGoBox extends StatelessWidget {
           SizedBox(height: 15.h),
           Text(
             'Create your individual & unique style and look amazing everyday.',
-            style: TextStyles.font15W400.copyWith(
-              color: ColorsManager.grey9E,
-            ),
+            style: TextStyles.font15W400.copyWith(color: ColorsManager.grey9E),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 30.h),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../features/home/ui/home_screen.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/login/ui/login_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
+import '../../features/sign_up/logic/email_cnofirmation_cubit.dart';
 import '../../features/sign_up/logic/signup_cubit.dart';
 import '../../features/sign_up/ui/confirm_email_screen.dart';
 import '../../features/sign_up/ui/signup_screen.dart';
@@ -15,8 +17,10 @@ class AppRouter {
     final arguments = settings.arguments;
 
     switch (settings.name) {
+      //***************************on boarding screen***********************/
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
+      //*****************************login screen**************************/
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -24,6 +28,7 @@ class AppRouter {
             child: const LoginScreen(),
           ),
         );
+      //************************sign up screen**************************/
       case Routes.signUpScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -31,10 +36,20 @@ class AppRouter {
             child: const SignupScreen(),
           ),
         );
+      //***********************confirm email screen**********************/
       case Routes.confirmEmailScreen:
+        final email = arguments as String?;
         return MaterialPageRoute(
-          builder: (_) => const ConfirmEmailScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<EmailConfirmationCubit>(),
+            child: const ConfirmEmailScreen(),
+          ),
+          settings: RouteSettings(
+            name: Routes.confirmEmailScreen,
+            arguments: email,
+          ),
         );
+      //************************home screen**************************/
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),

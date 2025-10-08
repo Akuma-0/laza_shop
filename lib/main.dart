@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/core/helpers/extensions.dart';
+
 import 'core/di/dependency_injection.dart';
 import 'core/helpers/constants.dart';
 import 'core/helpers/shared_pref_helper.dart';
@@ -21,6 +22,7 @@ checkIfLoggedInUser() async {
     SharedPrefKeys.userToken,
   );
   isLoggedInUser = !userToken.isNullOrEmpty();
+  debugPrint('isLoggedInUser: $isLoggedInUser');
 }
 
 checkIsOnboardingSeen() async {

@@ -4,6 +4,7 @@ import '../../features/login/data/models/login_request_body.dart';
 import '../../features/login/data/models/login_response.dart';
 import '../../features/sign_up/data/models/signup_request_body.dart';
 import '../../features/sign_up/data/models/signup_response.dart';
+import '../../features/sign_up/data/models/verify_email_request_body.dart';
 import 'api_constants.dart';
 
 part 'api_services.g.dart';
@@ -17,4 +18,9 @@ abstract class ApiService {
 
   @POST(ApiConstants.signup)
   Future<SignupResponse> signup(@Body() SignupRequestBody signupRequestBody);
+
+  @POST(ApiConstants.verifyEmail)
+  Future<dynamic> verifyEmail(
+    @Body() VerifyEmailRequestBody verifyEmailRequestBody,
+  );
 }

@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart'; 
+import 'package:dio/dio.dart';
 import 'api_constants.dart';
 import 'api_error_model.dart';
 
@@ -50,7 +50,6 @@ class ResponseMessage {
       ApiErrors.internalServerError; // failure, crash in server side
   static const String NOT_FOUND =
       ApiErrors.notFoundError; // failure, crash in server side
-
 
   static String CONNECT_TIMEOUT = ApiErrors.timeoutError;
   static String CANCEL = ApiErrors.defaultError;

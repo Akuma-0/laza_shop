@@ -1,21 +1,18 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_shop/core/helpers/extensions.dart';
-
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/colors_manager.dart';
 import '../../../../core/themes/text_styles.dart';
-import '../../logic/signup_cubit.dart';
-import '../../logic/signup_state.dart';
+import '../../logic/email_cnofirmation_cubit.dart';
+import '../../logic/email_confirmation_state.dart';
 
-class SignupBlocListener extends StatelessWidget {
-  const SignupBlocListener({super.key});
+class ConfirmEmailBlocListener extends StatelessWidget {
+  const ConfirmEmailBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SignupCubit, SignupState>(
+    return BlocListener<EmailConfirmationCubit, EmailConfirmationState>(
       listenWhen: (previous, current) =>
           current is Loading || current is Success || current is Error,
       listener: (context, state) {
@@ -31,12 +28,11 @@ class SignupBlocListener extends StatelessWidget {
             );
           },
           success: (loginResponse) {
-            context.pop();
-            context.pushNamed(
-              Routes.confirmEmailScreen,
-              arguments: context.read<SignupCubit>().emailController.text,
+            //pop until login screen
+            context.pushNamedAndRemoveUntil(
+              Routes.loginScreen,
+              predicate: (route) => false,
             );
-            log(context.read<SignupCubit>().emailController.text);
           },
           error: (error) {
             setupErrorState(context, error);
