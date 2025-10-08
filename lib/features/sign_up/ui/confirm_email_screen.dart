@@ -40,6 +40,14 @@ class ConfirmEmailScreen extends StatelessWidget {
           children: [
             SizedBox(height: 20.h),
             Text('Confirm your email', style: TextStyles.font28W600),
+            SizedBox(height: 10.h),
+            Text(
+              'Enter the 6-digit code sent to your email',
+              style: TextStyles.font13W500.copyWith(
+                color: ColorsManager.mainPurple,
+              ),
+            ),
+            SizedBox(height: 10.h),
             SvgPicture.asset(
               'assets/images/otp_cloud.svg',
               height: 166.h,
@@ -62,11 +70,7 @@ class ConfirmEmailScreen extends StatelessWidget {
                 defaultPinTheme: PinTheme(
                   width: 56,
                   height: 56,
-                  textStyle: TextStyle(
-                    fontSize: 20,
-                    color: Color.fromRGBO(30, 60, 87, 1),
-                    fontWeight: FontWeight.w600,
-                  ),
+                  textStyle: TextStyles.font22W500,
                   decoration: BoxDecoration(
                     color: ColorsManager.greyFA,
                     border: Border.all(color: ColorsManager.greyEA),
@@ -88,7 +92,7 @@ class ConfirmEmailScreen extends StatelessWidget {
             padding: EdgeInsets.all(20.0.w),
             decoration: BoxDecoration(color: ColorsManager.mainPurple),
             child: Text(
-              'Confirm Code',
+              'Verify Your Email',
               textAlign: TextAlign.center,
               style: TextStyles.font17W500.copyWith(color: Colors.white),
             ),
