@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../core/networking/api_constants.dart';
+import '../models/categories_response_model.dart';
 import '../models/products_response_model.dart';
 import 'home_api_constants.dart';
 
@@ -16,7 +17,16 @@ abstract class HomeApiService {
     @Header('Accept') String accept,
     @Body() Map<String, dynamic> body,
   );
+  
+  @GET(HomeApiConstants.categoriesEP)
+  Future<CategoriesResponseModel> getCategories(
+    @Header('Content-Type') String contentType,
+    @Header('Accept') String accept,
+    @Body() Map<String, dynamic> body,
+  );
 }
+
+
 /*
 var headers = {
   'Content-Type': 'application/json',

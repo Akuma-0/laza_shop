@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:laza_shop/features/home/ui/widgets/categories/category_bloc_builder.dart';
+import 'package:laza_shop/features/home/ui/widgets/categories/category_card.dart';
+import 'package:laza_shop/features/home/ui/widgets/categories/category_list_view.dart';
 import 'package:laza_shop/features/home/ui/widgets/search_container.dart';
 import '../../../core/themes/text_styles.dart';
 import 'widgets/products/products_bloc_builder.dart';
@@ -25,6 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
               Text('Welcome to Laza.', style: TextStyles.font15W400),
               SizedBox(height: 20.h),
               const SearchContainer(),
+              SizedBox(height: 10.h),
+              Text('Choose Brand', style: TextStyles.font17W500),
+              SizedBox(height: 10.h),
+              SizedBox(
+                height: 60.h,
+                child: const CategoryBlocBuilder()),
               SizedBox(height: 20.h),
               const Expanded(child: ProductsBlocBuilder()),
             ],

@@ -55,14 +55,17 @@ extension HomeStatePatterns on HomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( ProductsLoading value)?  productsLoading,TResult Function( ProductsSuccess value)?  productsSuccess,TResult Function( ProductsError value)?  productsError,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( ProductsLoading value)?  productsLoading,TResult Function( ProductsSuccess value)?  productsSuccess,TResult Function( ProductsError value)?  productsError,TResult Function( CategoriesLoading value)?  categoriesLoading,TResult Function( CategoriesSuccess value)?  categoriesSuccess,TResult Function( CategoriesError value)?  categoriesError,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case ProductsLoading() when productsLoading != null:
 return productsLoading(_that);case ProductsSuccess() when productsSuccess != null:
 return productsSuccess(_that);case ProductsError() when productsError != null:
-return productsError(_that);case _:
+return productsError(_that);case CategoriesLoading() when categoriesLoading != null:
+return categoriesLoading(_that);case CategoriesSuccess() when categoriesSuccess != null:
+return categoriesSuccess(_that);case CategoriesError() when categoriesError != null:
+return categoriesError(_that);case _:
   return orElse();
 
 }
@@ -80,14 +83,17 @@ return productsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( ProductsLoading value)  productsLoading,required TResult Function( ProductsSuccess value)  productsSuccess,required TResult Function( ProductsError value)  productsError,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( ProductsLoading value)  productsLoading,required TResult Function( ProductsSuccess value)  productsSuccess,required TResult Function( ProductsError value)  productsError,required TResult Function( CategoriesLoading value)  categoriesLoading,required TResult Function( CategoriesSuccess value)  categoriesSuccess,required TResult Function( CategoriesError value)  categoriesError,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case ProductsLoading():
 return productsLoading(_that);case ProductsSuccess():
 return productsSuccess(_that);case ProductsError():
-return productsError(_that);case _:
+return productsError(_that);case CategoriesLoading():
+return categoriesLoading(_that);case CategoriesSuccess():
+return categoriesSuccess(_that);case CategoriesError():
+return categoriesError(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -104,14 +110,17 @@ return productsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( ProductsLoading value)?  productsLoading,TResult? Function( ProductsSuccess value)?  productsSuccess,TResult? Function( ProductsError value)?  productsError,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( ProductsLoading value)?  productsLoading,TResult? Function( ProductsSuccess value)?  productsSuccess,TResult? Function( ProductsError value)?  productsError,TResult? Function( CategoriesLoading value)?  categoriesLoading,TResult? Function( CategoriesSuccess value)?  categoriesSuccess,TResult? Function( CategoriesError value)?  categoriesError,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case ProductsLoading() when productsLoading != null:
 return productsLoading(_that);case ProductsSuccess() when productsSuccess != null:
 return productsSuccess(_that);case ProductsError() when productsError != null:
-return productsError(_that);case _:
+return productsError(_that);case CategoriesLoading() when categoriesLoading != null:
+return categoriesLoading(_that);case CategoriesSuccess() when categoriesSuccess != null:
+return categoriesSuccess(_that);case CategoriesError() when categoriesError != null:
+return categoriesError(_that);case _:
   return null;
 
 }
@@ -128,13 +137,16 @@ return productsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  productsLoading,TResult Function( List<Product?>? productsDataList)?  productsSuccess,TResult Function( ErrorHandler errorHandler)?  productsError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  productsLoading,TResult Function( List<Product?>? productsDataList)?  productsSuccess,TResult Function( ErrorHandler errorHandler)?  productsError,TResult Function()?  categoriesLoading,TResult Function( List<Category?>? categoriesDataList)?  categoriesSuccess,TResult Function( ErrorHandler errorHandler)?  categoriesError,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case ProductsLoading() when productsLoading != null:
 return productsLoading();case ProductsSuccess() when productsSuccess != null:
 return productsSuccess(_that.productsDataList);case ProductsError() when productsError != null:
-return productsError(_that.errorHandler);case _:
+return productsError(_that.errorHandler);case CategoriesLoading() when categoriesLoading != null:
+return categoriesLoading();case CategoriesSuccess() when categoriesSuccess != null:
+return categoriesSuccess(_that.categoriesDataList);case CategoriesError() when categoriesError != null:
+return categoriesError(_that.errorHandler);case _:
   return orElse();
 
 }
@@ -152,13 +164,16 @@ return productsError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  productsLoading,required TResult Function( List<Product?>? productsDataList)  productsSuccess,required TResult Function( ErrorHandler errorHandler)  productsError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  productsLoading,required TResult Function( List<Product?>? productsDataList)  productsSuccess,required TResult Function( ErrorHandler errorHandler)  productsError,required TResult Function()  categoriesLoading,required TResult Function( List<Category?>? categoriesDataList)  categoriesSuccess,required TResult Function( ErrorHandler errorHandler)  categoriesError,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case ProductsLoading():
 return productsLoading();case ProductsSuccess():
 return productsSuccess(_that.productsDataList);case ProductsError():
-return productsError(_that.errorHandler);case _:
+return productsError(_that.errorHandler);case CategoriesLoading():
+return categoriesLoading();case CategoriesSuccess():
+return categoriesSuccess(_that.categoriesDataList);case CategoriesError():
+return categoriesError(_that.errorHandler);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +190,16 @@ return productsError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  productsLoading,TResult? Function( List<Product?>? productsDataList)?  productsSuccess,TResult? Function( ErrorHandler errorHandler)?  productsError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  productsLoading,TResult? Function( List<Product?>? productsDataList)?  productsSuccess,TResult? Function( ErrorHandler errorHandler)?  productsError,TResult? Function()?  categoriesLoading,TResult? Function( List<Category?>? categoriesDataList)?  categoriesSuccess,TResult? Function( ErrorHandler errorHandler)?  categoriesError,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case ProductsLoading() when productsLoading != null:
 return productsLoading();case ProductsSuccess() when productsSuccess != null:
 return productsSuccess(_that.productsDataList);case ProductsError() when productsError != null:
-return productsError(_that.errorHandler);case _:
+return productsError(_that.errorHandler);case CategoriesLoading() when categoriesLoading != null:
+return categoriesLoading();case CategoriesSuccess() when categoriesSuccess != null:
+return categoriesSuccess(_that.categoriesDataList);case CategoriesError() when categoriesError != null:
+return categoriesError(_that.errorHandler);case _:
   return null;
 
 }
@@ -385,6 +403,178 @@ class _$ProductsErrorCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
   return _then(ProductsError(
+null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
+as ErrorHandler,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CategoriesLoading implements HomeState {
+  const CategoriesLoading();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesLoading);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeState.categoriesLoading()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CategoriesSuccess implements HomeState {
+  const CategoriesSuccess(final  List<Category?>? categoriesDataList): _categoriesDataList = categoriesDataList;
+  
+
+ final  List<Category?>? _categoriesDataList;
+ List<Category?>? get categoriesDataList {
+  final value = _categoriesDataList;
+  if (value == null) return null;
+  if (_categoriesDataList is EqualUnmodifiableListView) return _categoriesDataList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CategoriesSuccessCopyWith<CategoriesSuccess> get copyWith => _$CategoriesSuccessCopyWithImpl<CategoriesSuccess>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesSuccess&&const DeepCollectionEquality().equals(other._categoriesDataList, _categoriesDataList));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_categoriesDataList));
+
+@override
+String toString() {
+  return 'HomeState.categoriesSuccess(categoriesDataList: $categoriesDataList)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CategoriesSuccessCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory $CategoriesSuccessCopyWith(CategoriesSuccess value, $Res Function(CategoriesSuccess) _then) = _$CategoriesSuccessCopyWithImpl;
+@useResult
+$Res call({
+ List<Category?>? categoriesDataList
+});
+
+
+
+
+}
+/// @nodoc
+class _$CategoriesSuccessCopyWithImpl<$Res>
+    implements $CategoriesSuccessCopyWith<$Res> {
+  _$CategoriesSuccessCopyWithImpl(this._self, this._then);
+
+  final CategoriesSuccess _self;
+  final $Res Function(CategoriesSuccess) _then;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? categoriesDataList = freezed,}) {
+  return _then(CategoriesSuccess(
+freezed == categoriesDataList ? _self._categoriesDataList : categoriesDataList // ignore: cast_nullable_to_non_nullable
+as List<Category?>?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CategoriesError implements HomeState {
+  const CategoriesError(this.errorHandler);
+  
+
+ final  ErrorHandler errorHandler;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CategoriesErrorCopyWith<CategoriesError> get copyWith => _$CategoriesErrorCopyWithImpl<CategoriesError>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesError&&(identical(other.errorHandler, errorHandler) || other.errorHandler == errorHandler));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,errorHandler);
+
+@override
+String toString() {
+  return 'HomeState.categoriesError(errorHandler: $errorHandler)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CategoriesErrorCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory $CategoriesErrorCopyWith(CategoriesError value, $Res Function(CategoriesError) _then) = _$CategoriesErrorCopyWithImpl;
+@useResult
+$Res call({
+ ErrorHandler errorHandler
+});
+
+
+
+
+}
+/// @nodoc
+class _$CategoriesErrorCopyWithImpl<$Res>
+    implements $CategoriesErrorCopyWith<$Res> {
+  _$CategoriesErrorCopyWithImpl(this._self, this._then);
+
+  final CategoriesError _self;
+  final $Res Function(CategoriesError) _then;
+
+/// Create a copy of HomeState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
+  return _then(CategoriesError(
 null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
 as ErrorHandler,
   ));
