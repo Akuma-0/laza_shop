@@ -27,4 +27,5 @@ checkIfLoggedInUser() async {
 
 checkIsOnboardingSeen() async {
   isOnboardingSeen = await SharedPrefHelper.getBool(SharedPrefKeys.onboarding);
+  
 }

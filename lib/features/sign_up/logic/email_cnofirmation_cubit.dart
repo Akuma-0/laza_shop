@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/models/verify_email_request_body.dart';
 import '../data/repos/verify_email_repo.dart';
+import '../../../core/networking/api_result.dart';
 import 'email_confirmation_state.dart';
 
 class EmailConfirmationCubit extends Cubit<EmailConfirmationState> {
