@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import '../../features/home/data/apis/home_api_services.dart';
+import '../../features/home/data/repos/home_repo.dart';
 import '../../features/login/data/repos/login_repo.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/sign_up/data/repos/signup_repo.dart';
@@ -30,7 +32,7 @@ Future<void> setupGetIt() async {
     () => EmailConfirmationCubit(getIt()),
   );
 
-  // // home
-  // getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
-  // getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt()));
+  // home
+  getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
+  getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt()));
 }
