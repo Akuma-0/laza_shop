@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_shop/core/networking/api_result.dart';
 import 'package:laza_shop/features/home/data/models/products_response_model.dart';
+import '../data/models/categories_response_model.dart';
 import '../data/repos/home_repo.dart';
 import 'home_state.dart';
 
@@ -11,6 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._homeRepo) : super(const HomeState.initial());
 
   List<Product?>? productsList = [];
+  List<Category?>? categoriesList = [];
 
   void getProducts() async {
     emit(const HomeState.productsLoading());
@@ -18,11 +20,25 @@ class HomeCubit extends Cubit<HomeState> {
     response.when(
       success: (productsResponseModel) {
         productsList = productsResponseModel.products ?? [];
-        log(productsList?[0]?.name ?? 'failed');
         emit(HomeState.productsSuccess(productsList));
       },
       failure: (errorHandler) {
         emit(HomeState.productsError(errorHandler));
+      },
+    );
+  }
+
+  void getCategories() async {
+    emit(const HomeState.categoriesLoading());
+    final response = await _homeRepo.getCategories({});
+    response.when(
+      success: (categoriesResponseModel) {
+        categoriesList = categoriesResponseModel.categories ?? [];
+        log(categoriesList?[0]?.name ?? 'failed');
+        emit(HomeState.categoriesSuccess(categoriesList));
+      },
+      failure: (errorHandler) {
+        emit(HomeState.categoriesError(errorHandler));
       },
     );
   }
