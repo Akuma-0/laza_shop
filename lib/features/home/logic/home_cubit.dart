@@ -16,7 +16,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   void getProducts() async {
     emit(const HomeState.productsLoading());
-    final response = await _homeRepo.getProducts({});
+    final response = await _homeRepo.getProducts({
+      "pageSize": 50
+    });
     response.when(
       success: (productsResponseModel) {
         productsList = productsResponseModel.products ?? [];
@@ -34,7 +36,6 @@ class HomeCubit extends Cubit<HomeState> {
     response.when(
       success: (categoriesResponseModel) {
         categoriesList = categoriesResponseModel.categories ?? [];
-        log(categoriesList?[0]?.name ?? 'failed');
         emit(HomeState.categoriesSuccess(categoriesList));
       },
       failure: (errorHandler) {

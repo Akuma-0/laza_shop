@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:laza_shop/core/themes/text_styles.dart';
+
 import '../../../../../core/themes/colors_manager.dart';
 import '../../../data/models/categories_response_model.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key, this.category});
+
   final Category? category;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +29,7 @@ class CategoryCard extends StatelessWidget {
             width: 40.w,
             height: 40.h,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(15.r),
+              borderRadius: BorderRadius.circular(2.r),
               child: _buildImage(),
             ),
           ),
@@ -56,7 +59,7 @@ class CategoryCard extends StatelessWidget {
       return SvgPicture.network(
         imageUrl,
         fit: BoxFit.contain,
-        
+
         placeholderBuilder: (context) =>
             Image.asset('assets/images/sandy_loading.gif'),
       );
@@ -65,7 +68,8 @@ class CategoryCard extends StatelessWidget {
       return CachedNetworkImage(
         imageUrl: imageUrl,
         fit: BoxFit.contain,
-        placeholder: (context, url) => Image.asset('assets/images/sandy_loading.gif'),
+        placeholder: (context, url) =>
+            Image.asset('assets/images/sandy_loading.gif'),
         errorWidget: (context, url, error) => _buildErrorWidget(),
       );
     }
