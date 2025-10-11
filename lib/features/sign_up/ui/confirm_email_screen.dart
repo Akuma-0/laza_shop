@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:laza_shop/core/widgets/app_bottom_bar.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../core/helpers/extensions.dart';
@@ -83,21 +84,9 @@ class ConfirmEmailScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        padding: EdgeInsets.zero,
-        child: GestureDetector(
-          onTap: () => validateThenConfirmEmail(context),
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20.0.w),
-            decoration: BoxDecoration(color: ColorsManager.mainPurple),
-            child: Text(
-              'Verify Your Email',
-              textAlign: TextAlign.center,
-              style: TextStyles.font17W500.copyWith(color: Colors.white),
-            ),
-          ),
-        ),
+      bottomNavigationBar: AppBottomBar(
+        onTap: () => validateThenConfirmEmail(context),
+        buttonText: 'Confirm Your Email',
       ),
     );
   }

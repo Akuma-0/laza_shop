@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/features/home/ui/widgets/categories/category_list_view.dart';
-import 'package:laza_shop/features/home/ui/widgets/products/products_grid_view.dart';
-
 import '../../../logic/home_cubit.dart';
 import '../../../logic/home_state.dart';
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/core/helpers/extensions.dart';
+import 'package:laza_shop/core/widgets/app_bottom_bar.dart';
 import 'package:laza_shop/features/login/ui/widgets/login_bloc_listner.dart';
 import 'package:laza_shop/features/login/ui/widgets/password_requirements.dart';
 import '../../../core/themes/colors_manager.dart';
@@ -76,21 +77,9 @@ class LoginScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        padding: EdgeInsets.zero,
-        child: GestureDetector(
-          onTap: () => validateThenDoLogin(context),
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20.0.w),
-            decoration: BoxDecoration(color: ColorsManager.mainPurple),
-            child: Text(
-              'Login',
-              textAlign: TextAlign.center,
-              style: TextStyles.font17W500.copyWith(color: Colors.white),
-            ),
-          ),
-        ),
+      bottomNavigationBar: AppBottomBar(
+        onTap: () => validateThenDoLogin(context),
+        buttonText: 'Login',
       ),
     );
   }

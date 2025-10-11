@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/home/data/models/products_response_model.dart';
 import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/home_screen.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/login/ui/login_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
+import '../../features/product_details/ui/product_details_screen.dart';
 import '../../features/sign_up/logic/email_cnofirmation_cubit.dart';
 import '../../features/sign_up/logic/signup_cubit.dart';
 import '../../features/sign_up/ui/confirm_email_screen.dart';
@@ -53,10 +55,24 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => HomeCubit(getIt())..getProducts()..getCategories(),
+            create: (context) => HomeCubit(getIt())
+              ..getProducts()
+              ..getCategories(),
             child: const HomeScreen(),
           ),
         );
+
+      //************************product details screen**************************/
+      case Routes.productDetailsScreen:
+        final product = arguments as Product;
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailsScreen(product: product),
+          /* BlocProvider(
+            create: (context) => getIt<ProductDetailsCubit>(),
+            child: ,
+          ),*/
+        );
+
       default:
         return null;
     }
