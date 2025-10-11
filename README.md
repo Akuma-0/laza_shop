@@ -177,7 +177,6 @@ The app includes configuration for:
 - **🎨 Beautiful UI Design** - Modern and clean interface
 - **🔐 Secure Authentication** - Email verification with OTP
 - **📱 Responsive Layout** - Optimized for all screen sizes
-- **⚡ Smooth Performance** - Fast loading with shimmer effects
 - **🛍️ Complete Shopping Flow** - From browsing to product details
 
 ## 🔧 Configuration
