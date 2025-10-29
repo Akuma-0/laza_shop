@@ -245,7 +245,15 @@ This project uses Fastlane for Firebase App Distribution. For security, Firebase
      [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes((Get-Content "android/app/google-services.json" -Raw)))
      ```
 
-2. **The workflow file** is already created at `.github/workflows/firebase-distribution.yml`
+2. **Create the workflow file** manually at `.github/workflows/firebase-distribution.yml`:
+
+   ```bash
+   # Copy the template workflow
+   mkdir -p .github/workflows
+   cp docs/workflows/firebase-distribution.yml .github/workflows/
+   ```
+
+   The workflow template is provided in `docs/workflows/firebase-distribution.yml` because GitHub's OAuth restrictions prevent automatic creation of workflow files.
 
 3. **For local development**, you need to restore the google-services.json file:
 
