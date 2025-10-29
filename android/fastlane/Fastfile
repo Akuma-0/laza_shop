@@ -1,8 +1,23 @@
 default_platform(:android)
 
-# Fix SSL issues on Windows
+# Simplified SSL fixes for Windows
 require 'openssl'
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+# Force disable SSL verification
+begin
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+  OpenSSL::SSL::VERIFY_CLIENT_ONCE = OpenSSL::SSL::VERIFY_NONE
+  OpenSSL::SSL::VERIFY_FAIL_IF_NO_PEER_CERT = OpenSSL::SSL::VERIFY_NONE
+rescue => e
+  # Ignore if constants are already defined
+end
+
+# Set environment variables for SSL bypass
+ENV['SSL_VERIFY_MODE'] = 'none'
+ENV['DISABLE_SSL_VERIFICATION'] = 'true'
+ENV['OPENSSL_CONF'] = ''
+ENV['HTTPS_CA_DIR'] = ''
+ENV['HTTPS_CA_FILE'] = ''
 
 # Load environment variables from project root .env file
 def load_env_file
@@ -28,6 +43,30 @@ platform :android do
     # Load environment variables from project root .env file
     load_env_file
     
+    # Additional runtime SSL bypass
+    begin
+      require 'openssl'
+      OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+      UI.message("✅ SSL verification disabled at runtime")
+    rescue => e
+      UI.message("⚠️ Could not disable SSL verification: #{e.message}")
+    end
+    
+    # Inject google-services.json if GOOGLE_SERVICES_JSON env var is set
+    if ENV['GOOGLE_SERVICES_JSON'] && !ENV['GOOGLE_SERVICES_JSON'].empty?
+      UI.message("Injecting google-services.json from environment variable...")
+      sh "../../scripts/inject-google-services.bat"
+    else
+      UI.message("Checking if google-services.json exists...")
+      google_services_path = File.expand_path("../app/google-services.json", __dir__)
+      UI.message("Looking for google-services.json at: #{google_services_path}")
+      unless File.exist?(google_services_path)
+        UI.user_error!("google-services.json is missing! Either set GOOGLE_SERVICES_JSON env var or place the file at android/app/google-services.json")
+      else
+        UI.success("✅ Found google-services.json at #{google_services_path}")
+      end
+    end
+    
     sh "flutter clean"
     sh "flutter build apk --release --flavor production --target lib/main.dart --no-tree-shake-icons"
     # Read sensitive values from environment variables to avoid committing secrets.
@@ -37,14 +76,39 @@ platform :android do
 
     UI.user_error!("Missing FIREBASE_APP_ID. Set the FIREBASE_APP_ID env var (or ANDROID_FIREBASE_APP_ID) in CI or in .env file at project root.") unless app_id && !app_id.empty?
     UI.user_error!("Missing FIREBASE_CLI_TOKEN. Set FIREBASE_CLI_TOKEN or FIREBASE_TOKEN env var in CI or in .env file at project root.") unless firebase_token && !firebase_token.empty?
-
-    firebase_app_distribution(
-            app: app_id,
-            firebase_cli_token: firebase_token,
-            android_artifact_type: "APK",
-            apk_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
-            testers: "hany.m7md101@gmail.com",
-            release_notes: "first release with fastlane",
-        )
+    # Wrap firebase_app_distribution in SSL bypass block
+    begin
+      # Force SSL settings one more time before the network call
+      ENV['SSL_VERIFY_MODE'] = 'none'
+      ENV['HTTPS_CA_DIR'] = ''
+      ENV['HTTPS_CA_FILE'] = ''
+      
+      firebase_app_distribution(
+              app: app_id,
+              firebase_cli_token: firebase_token,
+              android_artifact_type: "APK",
+              apk_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
+              testers: "hany.m7md101@gmail.com",
+              release_notes: "Release with comprehensive SSL bypass - #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}",
+              debug: true
+          )
+          
+      UI.success("🎉 Successfully distributed APK to Firebase App Distribution!")
+      
+    rescue => e
+      UI.error("Firebase distribution failed: #{e.message}")
+      UI.error("Full error details: #{e.backtrace.join("\n")}")
+      
+      if e.message.include?("SSL") || e.message.include?("certificate") || e.message.include?("TLS")
+        UI.user_error!("🔧 SSL/TLS Error: #{e.message}\n\nThis is likely a Windows certificate issue. Try:\n1. Run: bundle exec fastlane android firebase_distribution\n2. Update your Ruby SSL certificates\n3. Check your network configuration")
+      elsif e.message.include?("401") || e.message.include?("authentication")
+        UI.user_error!("Authentication failed. Please check your FIREBASE_CLI_TOKEN is valid.")
+      elsif e.message.include?("403") || e.message.include?("permission")
+        UI.user_error!("Permission denied. Please check your Firebase project permissions and app ID.")
+      else
+        # Re-raise the original error
+        raise e
+      end
+    end
   end
 end

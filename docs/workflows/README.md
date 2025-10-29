@@ -9,14 +9,16 @@ GitHub prevents OAuth Apps (like VS Code extensions) from creating or modifying 
 ## How to use:
 
 1. **Manually copy the workflow file**:
+
    ```bash
    mkdir -p .github/workflows
    cp docs/workflows/firebase-distribution.yml .github/workflows/
    ```
 
 2. **Set up repository secrets** in GitHub Settings > Secrets and variables > Actions:
+
    - `FIREBASE_APP_ID`
-   - `FIREBASE_CLI_TOKEN` 
+   - `FIREBASE_CLI_TOKEN`
    - `GOOGLE_SERVICES_JSON`
 
 3. **Commit and push** the workflow file:
@@ -33,6 +35,7 @@ GitHub prevents OAuth Apps (like VS Code extensions) from creating or modifying 
 ## Alternative CI/CD platforms:
 
 If you're using other CI/CD platforms, adapt the workflow steps for:
+
 - Azure DevOps Pipelines
 - GitLab CI/CD
 - Bitrise
