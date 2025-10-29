@@ -1,0 +1,50 @@
+default_platform(:android)
+
+# Fix SSL issues on Windows
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+# Load environment variables from project root .env file
+def load_env_file
+  env_file_path = File.join(Dir.pwd, '../../.env')
+  if File.exist?(env_file_path)
+    File.readlines(env_file_path).each do |line|
+      # Skip comments and empty lines
+      next if line.strip.empty? || line.strip.start_with?('#')
+      
+      # Parse KEY=VALUE pairs
+      key, value = line.strip.split('=', 2)
+      ENV[key] = value if key && value
+    end
+    UI.success("Loaded environment variables from #{env_file_path}")
+  else
+    UI.message("No .env file found at project root (#{env_file_path})")
+  end
+end
+
+platform :android do
+  desc "Lane for Android Firebase Distribution"
+  lane :firebase_distribution do
+    # Load environment variables from project root .env file
+    load_env_file
+    
+    sh "flutter clean"
+    sh "flutter build apk --release --flavor production --target lib/main.dart --no-tree-shake-icons"
+    # Read sensitive values from environment variables to avoid committing secrets.
+    # Preferred names: FIREBASE_APP_ID and FIREBASE_CLI_TOKEN (or FIREBASE_TOKEN).
+    app_id = ENV['FIREBASE_APP_ID'] || ENV['ANDROID_FIREBASE_APP_ID']
+    firebase_token = ENV['FIREBASE_CLI_TOKEN'] || ENV['FIREBASE_TOKEN']
+
+    UI.user_error!("Missing FIREBASE_APP_ID. Set the FIREBASE_APP_ID env var (or ANDROID_FIREBASE_APP_ID) in CI or in .env file at project root.") unless app_id && !app_id.empty?
+    UI.user_error!("Missing FIREBASE_CLI_TOKEN. Set FIREBASE_CLI_TOKEN or FIREBASE_TOKEN env var in CI or in .env file at project root.") unless firebase_token && !firebase_token.empty?
+
+    firebase_app_distribution(
+            app: app_id,
+            firebase_cli_token: firebase_token,
+            android_artifact_type: "APK",
+            apk_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
+            testers: "hany.m7md101@gmail.com",
+            release_notes: "first release with fastlane",
+        )
+  end
+end

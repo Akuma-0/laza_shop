@@ -189,6 +189,81 @@ The app uses environment-specific configurations:
 - Secure token storage
 - Network timeout configurations
 
+### Firebase Distribution & CI/CD
+
+This project uses Fastlane for Firebase App Distribution. For security, Firebase tokens and app IDs are stored as environment variables.
+
+#### Local Development Setup
+
+1. **Copy environment template**:
+
+   ```bash
+   cp android/fastlane/.env.example .env
+   ```
+
+2. **Get Firebase CLI token**:
+
+   ```bash
+   # Install Firebase CLI if not already installed
+   npm install -g firebase-tools
+
+   # Login and get CI token
+   firebase login:ci
+   ```
+
+   Copy the token from the output.
+
+3. **Edit .env file**:
+
+   ```bash
+   # Open .env and set your values
+   FIREBASE_APP_ID=1:766832833441:android:40e6a427aade9ea5fd91e0
+   FIREBASE_CLI_TOKEN=your_token_from_firebase_login_ci
+   ```
+
+4. **Run Firebase distribution**:
+   ```bash
+   cd android/fastlane
+   fastlane firebase_distribution
+   ```
+
+#### CI/CD Setup (GitHub Actions)
+
+1. **Add repository secrets** in GitHub Settings > Secrets and variables > Actions:
+
+   - `FIREBASE_APP_ID`: `1:766832833441:android:40e6a427aade9ea5fd91e0`
+   - `FIREBASE_CLI_TOKEN`: Your Firebase CLI token from `firebase login:ci`
+   - `GOOGLE_SERVICES_JSON`: Base64 encoded content of your original `android/app/google-services.json`
+
+     To encode the file, run:
+
+     ```bash
+     # Linux/macOS
+     base64 -w 0 android/app/google-services.json
+
+     # Windows PowerShell
+     [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes((Get-Content "android/app/google-services.json" -Raw)))
+     ```
+
+2. **The workflow file** is already created at `.github/workflows/firebase-distribution.yml`
+
+3. **For local development**, you need to restore the google-services.json file:
+
+   ```bash
+   # Use the injection script to restore from your local backup
+   export GOOGLE_SERVICES_JSON="your_base64_encoded_content"
+   ./scripts/inject-google-services.sh
+
+   # Or manually copy your backup file
+   cp path/to/your/backup/google-services.json android/app/
+   ```
+
+#### Other CI Platforms
+
+- **Azure DevOps**: Use variable groups or pipeline variables
+- **GitLab CI**: Use project variables in Settings > CI/CD > Variables
+- **Bitrise**: Use environment variables in workflow settings
+
 ### Assets
 
 ```
