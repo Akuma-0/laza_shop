@@ -1,0 +1,37 @@
+# Google Services Configuration - CI/CD Template
+# 
+# This is a template showing the structure of google-services.json
+# The actual file should be injected during CI/CD from encrypted secrets
+# 
+# For local development, restore the original google-services.json file
+# For CI/CD, use the injection scripts in /scripts/ directory
+
+{
+  "project_info": {
+    "project_number": "YOUR_PROJECT_NUMBER",
+    "project_id": "YOUR_PROJECT_ID", 
+    "storage_bucket": "YOUR_STORAGE_BUCKET"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "YOUR_MOBILE_SDK_APP_ID",
+        "android_client_info": {
+          "package_name": "com.example.laza_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "YOUR_API_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

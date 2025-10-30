@@ -66,6 +66,8 @@ dependencies:
   flutter_native_splash: ^2.4.6
   # OTP text field
   pinput: ^5.0.2
+  firebase_core: ^4.2.0
+  flutter_dotenv: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -84,7 +86,7 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/images/logo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21 # android min sdk min:16, default 21
-  adaptive_icon_background: "#9775FA"
+  adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/images/logo.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -100,6 +102,7 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
