@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/core/helpers/extensions.dart';
 import 'package:laza_shop/core/widgets/app_bottom_bar.dart';
 import 'package:laza_shop/features/login/ui/widgets/login_bloc_listner.dart';
-import 'package:laza_shop/features/login/ui/widgets/password_requirements.dart';
 import '../../../core/themes/text_styles.dart';
 import '../logic/login_cubit.dart';
 import 'widgets/login_form.dart';
@@ -35,11 +34,6 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: 50.0.h),
                 LoginForm(),
                 SizedBox(height: 10.h),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: PasswordRequirements(),
-                ),
-                SizedBox(height: 20.0.h),
                 //ToDo: Forgot Password Screen
                 Align(
                   alignment: Alignment.centerRight,
