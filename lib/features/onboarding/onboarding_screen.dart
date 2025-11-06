@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../core/themes/colors_manager.dart';
+import '../../core/themes/app_color/app_color_light.dart';
 import 'widgets/lets_go_box.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsManager.mainPurple,
+      backgroundColor: AppColorLight.primaryColor,
       body: Stack(
         children: [
           Container(
@@ -19,7 +19,7 @@ class OnboardingScreen extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color(0xffB0A3E5), ColorsManager.mainPurple],
+                colors: [Color(0xffB0A3E5), AppColorLight.primaryColor],
               ),
             ),
           ),

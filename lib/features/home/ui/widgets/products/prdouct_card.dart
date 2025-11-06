@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/core/helpers/extensions.dart';
 import 'package:laza_shop/core/routing/routes.dart';
-
-import '../../../../../core/themes/colors_manager.dart';
 import '../../../../../core/themes/text_styles.dart';
 import '../../../data/models/products_response_model.dart';
 
@@ -35,7 +33,7 @@ class ProductCard extends StatelessWidget {
                     height: 203.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
-                      color: ColorsManager.greyEA,
+                      color: Theme.of(context).colorScheme.surfaceContainer,
                     ),
                     child: CachedNetworkImage(
                       imageUrl: product?.imageUrl ?? '',
@@ -45,7 +43,7 @@ class ProductCard extends StatelessWidget {
                       fit: BoxFit.cover,
                       errorWidget: (context, url, error) => Icon(
                         Icons.image_not_supported,
-                        color: ColorsManager.mainPurple,
+                        color: Theme.of(context).colorScheme.primary,
                         size: 40.sp,
                       ),
                       width: 160.w,
@@ -61,7 +59,7 @@ class ProductCard extends StatelessWidget {
                       },
                       child: Icon(
                         Icons.favorite_border,
-                        color: ColorsManager.grey9E,
+                        color: Theme.of(context).colorScheme.onSecondary,
                       ),
                     ),
                   ),

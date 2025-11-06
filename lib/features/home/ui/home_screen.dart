@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/features/home/ui/widgets/categories/category_bloc_builder.dart';
-import 'package:laza_shop/features/home/ui/widgets/categories/category_card.dart';
-import 'package:laza_shop/features/home/ui/widgets/categories/category_list_view.dart';
 import 'package:laza_shop/features/home/ui/widgets/search_container.dart';
 import '../../../core/themes/text_styles.dart';
 import 'widgets/products/products_bloc_builder.dart';

@@ -6,7 +6,6 @@ import 'package:laza_shop/core/widgets/app_bottom_bar.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../core/helpers/extensions.dart';
-import '../../../core/themes/colors_manager.dart';
 import '../../../core/themes/text_styles.dart';
 import '../logic/email_cnofirmation_cubit.dart';
 import 'widgets/confirm_email_bloc_listner.dart';
@@ -24,7 +23,7 @@ class ConfirmEmailScreen extends StatelessWidget {
         leading: Padding(
           padding: EdgeInsetsDirectional.all(6.w),
           child: CircleAvatar(
-            backgroundColor: ColorsManager.greyFA,
+            backgroundColor: Theme.of(context).colorScheme.onSecondary,
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -45,7 +44,7 @@ class ConfirmEmailScreen extends StatelessWidget {
             Text(
               'Enter the 6-digit code sent to your email',
               style: TextStyles.font13W500.copyWith(
-                color: ColorsManager.mainPurple,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             SizedBox(height: 10.h),
@@ -73,8 +72,10 @@ class ConfirmEmailScreen extends StatelessWidget {
                   height: 56,
                   textStyle: TextStyles.font22W500,
                   decoration: BoxDecoration(
-                    color: ColorsManager.greyFA,
-                    border: Border.all(color: ColorsManager.greyEA),
+                    color: Theme.of(context).colorScheme.secondary,
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.surfaceContainer,
+                    ),
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),

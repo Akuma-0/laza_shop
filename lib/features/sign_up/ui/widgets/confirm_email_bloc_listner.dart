@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_shop/core/helpers/extensions.dart';
 import '../../../../core/routing/routes.dart';
-import '../../../../core/themes/colors_manager.dart';
+import '../../../../core/themes/app_color/app_color_light.dart';
 import '../../../../core/themes/text_styles.dart';
 import '../../logic/email_cnofirmation_cubit.dart';
 import '../../logic/email_confirmation_state.dart';
@@ -22,7 +22,7 @@ class ConfirmEmailBlocListener extends StatelessWidget {
               context: context,
               builder: (context) => const Center(
                 child: CircularProgressIndicator(
-                  color: ColorsManager.mainPurple,
+                  color: AppColorLight.primaryColor,
                 ),
               ),
             );
