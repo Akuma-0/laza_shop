@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:laza_shop/core/themes/theme_data/theme_data_dark.dart';
 import 'core/helpers/constants.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
-import 'core/themes/colors_manager.dart';
+import 'core/themes/theme_data/theme_data_light.dart';
 
 class LazaShopApp extends StatelessWidget {
   final AppRouter appRouter;
@@ -14,21 +15,21 @@ class LazaShopApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      child: MaterialApp(
-        title: 'Accessories Shop App',
-        theme: ThemeData(
-          primaryColor: ColorsManager.mainPurple,
-          scaffoldBackgroundColor: ColorsManager.mainWhite,
-          textTheme: TextTheme(bodyLarge: TextStyle(color: Colors.black)),
-        ),
-        debugShowCheckedModeBanner: false,
-        initialRoute: isLoggedInUser
-            ? Routes.homeScreen
-            : isOnboardingSeen
-            ? Routes.loginScreen
-            : Routes.onBoardingScreen,
-        onGenerateRoute: appRouter.generateRoute,
-      ),
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Accessories Shop App',
+          theme: getThemeDataLight(),
+          darkTheme: getThemeDataDark(),
+          themeMode: ThemeMode.system,
+          debugShowCheckedModeBanner: false,
+          initialRoute: isLoggedInUser
+              ? Routes.homeScreen
+              : isOnboardingSeen
+              ? Routes.loginScreen
+              : Routes.onBoardingScreen,
+          onGenerateRoute: appRouter.generateRoute,
+        );
+      },
     );
   }
 }
