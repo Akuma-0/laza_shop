@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../themes/colors_manager.dart';
+import '../themes/app_color/app_color_light.dart';
 import '../themes/text_styles.dart';
 
 class AppBottomBar extends StatelessWidget {
@@ -21,7 +21,7 @@ class AppBottomBar extends StatelessWidget {
         child: Container(
           width: double.infinity,
           padding: EdgeInsets.all(20.0.w),
-          decoration: BoxDecoration(color: ColorsManager.mainPurple),
+          decoration: BoxDecoration(color: AppColorLight.primaryColor),
           child: Text(
             buttonText,
             textAlign: TextAlign.center,

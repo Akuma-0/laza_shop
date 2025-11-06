@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:laza_shop/core/themes/text_styles.dart';
-
-import '../../../../../core/themes/colors_manager.dart';
 import '../../../data/models/categories_response_model.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -20,7 +18,7 @@ class CategoryCard extends StatelessWidget {
       margin: EdgeInsets.only(right: 10.w),
       padding: EdgeInsets.symmetric(horizontal: 5.w),
       decoration: BoxDecoration(
-        color: ColorsManager.greyFA,
+        color: Theme.of(context).colorScheme.secondary,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -30,14 +28,16 @@ class CategoryCard extends StatelessWidget {
             height: 40.h,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(2.r),
-              child: _buildImage(),
+              child: _buildImage(context),
             ),
           ),
           SizedBox(width: 8.w),
           Expanded(
             child: Text(
               category?.name ?? 'Unknown',
-              style: TextStyles.font15W500,
+              style: TextStyles.font15W500.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
@@ -47,11 +47,11 @@ class CategoryCard extends StatelessWidget {
     );
   }
 
-  Widget _buildImage() {
+  Widget _buildImage(BuildContext context) {
     final imageUrl = category?.imageUrl ?? '';
 
     if (imageUrl.isEmpty) {
-      return _buildErrorWidget();
+      return _buildErrorWidget(context);
     }
 
     // Check if the URL is an SVG file
@@ -70,15 +70,15 @@ class CategoryCard extends StatelessWidget {
         fit: BoxFit.contain,
         placeholder: (context, url) =>
             Image.asset('assets/images/sandy_loading.gif'),
-        errorWidget: (context, url, error) => _buildErrorWidget(),
+        errorWidget: (context, url, error) => _buildErrorWidget(context),
       );
     }
   }
 
-  Widget _buildErrorWidget() {
+  Widget _buildErrorWidget(var context) {
     return Icon(
       Icons.image_not_supported,
-      color: ColorsManager.mainPurple,
+      color: Theme.of(context).colorScheme.primary,
       size: 20.sp,
     );
   }

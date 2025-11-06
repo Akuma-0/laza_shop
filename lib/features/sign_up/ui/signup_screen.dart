@@ -5,7 +5,6 @@ import 'package:laza_shop/core/widgets/app_bottom_bar.dart';
 import 'package:laza_shop/features/sign_up/ui/widgets/signup_bloc_listner.dart';
 import 'package:laza_shop/features/sign_up/ui/widgets/signup_form.dart';
 import '../../../core/helpers/extensions.dart';
-import '../../../core/themes/colors_manager.dart';
 import '../../../core/themes/text_styles.dart';
 import '../logic/signup_cubit.dart';
 
@@ -22,49 +21,52 @@ class SignupScreen extends StatelessWidget {
         leading: Padding(
           padding: EdgeInsetsDirectional.all(6.w),
           child: CircleAvatar(
-            backgroundColor: ColorsManager.greyFA,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 context.pop();
               },
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 20.h),
-            Text('Sign Up', style: TextStyles.font28W600),
-            SizedBox(height: 50.0.h),
-            SignupForm(),
-            SizedBox(height: 40.0.h),
-            Align(
-              alignment: AlignmentGeometry.center,
-              child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text:
-                      'By connecting your account confirm that you agree with our ',
-                  style: TextStyles.font13W400.copyWith(
-                    color: ColorsManager.grey9E,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: 'Terms & Conditions',
-                      style: TextStyles.font13W500.copyWith(
-                        color: Colors.black,
-                      ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 20.h),
+              Text('Sign Up', style: TextStyles.font28W600),
+              SizedBox(height: 50.0.h),
+              SignupForm(),
+              SizedBox(height: 40.0.h),
+              Align(
+                alignment: AlignmentGeometry.center,
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text:
+                        'By connecting your account confirm that you agree with our ',
+                    style: TextStyles.font13W400.copyWith(
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
-                  ],
+                    children: [
+                      TextSpan(
+                        text: 'Terms & Conditions',
+                        style: TextStyles.font13W500.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SignupBlocListener(),
-          ],
+              SignupBlocListener(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: AppBottomBar(
