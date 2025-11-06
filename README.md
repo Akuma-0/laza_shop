@@ -151,30 +151,54 @@ The app includes configuration for:
 
 ### App Launch & Onboarding
 
+#### Light Mode & Dark Mode
+
 <div align="center">
   <img src="screenshots/SPLASH.png" width="250" alt="Splash Screen">
-  <img src="screenshots/ONBOARDING.png" width="250" alt="Onboarding Screen">
+  <img src="screenshots/ONBOARDING.png" width="250" alt="Onboarding Light">
+  <img src="screenshots/ONBOARDING_DARK.png" width="250" alt="Onboarding Dark">
 </div>
 
 ### Authentication Flow
 
+#### Light Mode
+
 <div align="center">
-  <img src="screenshots/LOGIN.png" width="250" alt="Login Screen">
-  <img src="screenshots/SIGNUP.png" width="250" alt="Sign Up Screen">
-  <img src="screenshots/OTP.png" width="250" alt="OTP Verification">
+  <img src="screenshots/LOGIN.png" width="250" alt="Login Light">
+  <img src="screenshots/SIGNUP.png" width="250" alt="Sign Up Light">
+  <img src="screenshots/OTP.png" width="250" alt="OTP Light">
+</div>
+
+#### Dark Mode
+
+<div align="center">
+  <img src="screenshots/LOGIN_DARK.png" width="250" alt="Login Dark">
+  <img src="screenshots/SIGNUP_DARK.png" width="250" alt="Sign Up Dark">
+  <img src="screenshots/OTP_DARK.png" width="250" alt="OTP Dark">
 </div>
 
 ### Shopping Experience
 
+#### Light Mode
+
 <div align="center">
-  <img src="screenshots/PRODUCTS_LOADING.png" width="250" alt="Products Loading">
-  <img src="screenshots/PRODUCTS.png" width="250" alt="Products Screen">
-  <img src="screenshots/PRODUCT_DETAILS.png" width="250" alt="Product Details">
+  <img src="screenshots/PRODUCTS_LOADING.png" width="250" alt="Products Loading Light">
+  <img src="screenshots/PRODUCTS.png" width="250" alt="Products Light">
+  <img src="screenshots/PRODUCT_DETAILS.png" width="250" alt="Product Details Light">
+</div>
+
+#### Dark Mode
+
+<div align="center">
+  <img src="screenshots/PRODUCTS_LOADING_DARK.png" width="250" alt="Products Loading Dark">
+  <img src="screenshots/PRODUCTS_DARK.png" width="250" alt="Products Dark">
+  <img src="screenshots/PRODUCT_DETAILS_DARK.png" width="250" alt="Product Details Dark">
 </div>
 
 ### Key Features Showcase
 
-- **🎨 Beautiful UI Design** - Modern and clean interface
+- **🎨 Beautiful UI Design** - Modern and clean interface with light and dark mode support
+- **🌙 Dark Mode** - Seamless dark mode experience across all screens
 - **🔐 Secure Authentication** - Email verification with OTP
 - **📱 Responsive Layout** - Optimized for all screen sizes
 - **🛍️ Complete Shopping Flow** - From browsing to product details
