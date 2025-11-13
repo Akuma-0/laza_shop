@@ -10,6 +10,7 @@ A modern Flutter e-commerce application for accessories shopping with a clean ar
 - **User Registration** - Sign up with email verification
 - **User Login** - Secure authentication with token management
 - **Email Verification** - OTP-based email confirmation system
+- **Automatic Token Refresh** - Seamless token renewal using refresh tokens for uninterrupted user sessions
 
 ### Shopping Experience
 
@@ -24,6 +25,7 @@ A modern Flutter e-commerce application for accessories shopping with a clean ar
 - **Network Caching** - Optimized image loading and caching
 - **Shimmer Loading** - Beautiful loading animations
 - **Custom Splash Screen** - Branded app launch experience
+- **Automatic Session Management** - Intelligent token refresh mechanism that handles expired tokens transparently
 
 ## 🏗️ Architecture & State Management
 
@@ -61,6 +63,30 @@ Each feature follows the **Data-Logic-UI** pattern:
 - `logic/` - Cubits/BLoCs for state management
 - `ui/` - Screens and widgets
 
+### Authentication & Token Management
+
+The app implements a robust token refresh mechanism that ensures seamless user experience:
+
+#### Automatic Token Refresh
+
+- **Interceptor-Based**: Uses Dio interceptors to automatically detect 401 (Unauthorized) responses
+- **Transparent Renewal**: Automatically refreshes expired access tokens using stored refresh tokens
+- **Request Retry**: Failed requests are automatically retried with the new access token
+- **Secure Storage**: Both access tokens and refresh tokens are securely stored using Flutter Secure Storage
+
+#### Implementation Details
+
+- **Login Flow**: On successful login, both access token and refresh token are stored securely
+- **API Interceptor**: Monitors all API responses for 401 status codes
+- **Token Refresh**: When a 401 is detected, the system:
+  1. Retrieves the stored refresh token
+  2. Calls the refresh token endpoint
+  3. Updates stored tokens with new values
+  4. Retries the original failed request
+  5. Returns the successful response to the user
+
+This ensures users remain logged in even when their access tokens expire, providing a smooth and uninterrupted app experience.
+
 ## 📦 Dependencies
 
 ### Core Dependencies
@@ -88,7 +114,7 @@ shimmer: ^3.0.0 # Loading animations
 
 # Storage & Security
 shared_preferences: ^2.5.3 # Local storage
-flutter_secure_storage: ^9.2.4 # Secure storage
+flutter_secure_storage: ^9.2.4 # Secure storage for tokens and refresh tokens
 
 # Other
 pinput: ^5.0.2 # OTP input field
@@ -186,8 +212,25 @@ The app includes configuration for:
 The app uses environment-specific configurations:
 
 - Development/Production API endpoints
-- Secure token storage
+- Secure token storage with automatic refresh capability
 - Network timeout configurations
+- JWT token management with refresh token rotation
+
+### Security Features
+
+#### Token Management
+
+- **JWT Access Tokens**: Short-lived tokens for API authentication
+- **Refresh Tokens**: Long-lived tokens for automatic token renewal
+- **Secure Storage**: Encrypted local storage for sensitive authentication data
+- **Automatic Cleanup**: Tokens are automatically cleared on authentication errors
+
+#### Network Security
+
+- **Request Interceptors**: Automatic token injection and validation
+- **Error Handling**: Graceful handling of authentication failures
+- **Token Rotation**: Secure refresh token rotation on each renewal
+- **Session Persistence**: Maintains user sessions across app restarts
 
 ### Firebase Distribution & CI/CD
 
