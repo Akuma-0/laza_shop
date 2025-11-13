@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../features/login/data/models/login_request_body.dart';
 import '../../features/login/data/models/login_response.dart';
@@ -23,4 +24,17 @@ abstract class ApiService {
   Future<dynamic> verifyEmail(
     @Body() VerifyEmailRequestBody verifyEmailRequestBody,
   );
+  @POST(ApiConstants.refreshToken)
+  Future<LoginResponse> refreshToken(
+    @Body() Map<String, dynamic> refreshTokenRequestBody,
+  );
+}
+
+@JsonSerializable()
+class RefreshTokenRequestBody {
+  final String refreshToken;
+
+  RefreshTokenRequestBody({required this.refreshToken});
+
+  Map<String, dynamic> toJson() => _$RefreshTokenRequestBodyToJson(this);
 }
