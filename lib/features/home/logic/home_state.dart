@@ -11,7 +11,8 @@ class HomeState with _$HomeState {
 
   // Products
   const factory HomeState.productsLoading() = ProductsLoading;
-  const factory HomeState.productsSuccess(
+  const factory HomeState.productsLoadingMore() = ProductsLoadingMore;
+  const factory HomeState.productsSuccess(  
     List<Product?>? productsDataList,
   ) = ProductsSuccess;
   const factory HomeState.productsError(ErrorHandler errorHandler) =

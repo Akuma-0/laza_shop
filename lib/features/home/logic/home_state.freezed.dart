@@ -55,12 +55,13 @@ extension HomeStatePatterns on HomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( ProductsLoading value)?  productsLoading,TResult Function( ProductsSuccess value)?  productsSuccess,TResult Function( ProductsError value)?  productsError,TResult Function( CategoriesLoading value)?  categoriesLoading,TResult Function( CategoriesSuccess value)?  categoriesSuccess,TResult Function( CategoriesError value)?  categoriesError,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( ProductsLoading value)?  productsLoading,TResult Function( ProductsLoadingMore value)?  productsLoadingMore,TResult Function( ProductsSuccess value)?  productsSuccess,TResult Function( ProductsError value)?  productsError,TResult Function( CategoriesLoading value)?  categoriesLoading,TResult Function( CategoriesSuccess value)?  categoriesSuccess,TResult Function( CategoriesError value)?  categoriesError,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case ProductsLoading() when productsLoading != null:
-return productsLoading(_that);case ProductsSuccess() when productsSuccess != null:
+return productsLoading(_that);case ProductsLoadingMore() when productsLoadingMore != null:
+return productsLoadingMore(_that);case ProductsSuccess() when productsSuccess != null:
 return productsSuccess(_that);case ProductsError() when productsError != null:
 return productsError(_that);case CategoriesLoading() when categoriesLoading != null:
 return categoriesLoading(_that);case CategoriesSuccess() when categoriesSuccess != null:
@@ -83,12 +84,13 @@ return categoriesError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( ProductsLoading value)  productsLoading,required TResult Function( ProductsSuccess value)  productsSuccess,required TResult Function( ProductsError value)  productsError,required TResult Function( CategoriesLoading value)  categoriesLoading,required TResult Function( CategoriesSuccess value)  categoriesSuccess,required TResult Function( CategoriesError value)  categoriesError,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( ProductsLoading value)  productsLoading,required TResult Function( ProductsLoadingMore value)  productsLoadingMore,required TResult Function( ProductsSuccess value)  productsSuccess,required TResult Function( ProductsError value)  productsError,required TResult Function( CategoriesLoading value)  categoriesLoading,required TResult Function( CategoriesSuccess value)  categoriesSuccess,required TResult Function( CategoriesError value)  categoriesError,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case ProductsLoading():
-return productsLoading(_that);case ProductsSuccess():
+return productsLoading(_that);case ProductsLoadingMore():
+return productsLoadingMore(_that);case ProductsSuccess():
 return productsSuccess(_that);case ProductsError():
 return productsError(_that);case CategoriesLoading():
 return categoriesLoading(_that);case CategoriesSuccess():
@@ -110,12 +112,13 @@ return categoriesError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( ProductsLoading value)?  productsLoading,TResult? Function( ProductsSuccess value)?  productsSuccess,TResult? Function( ProductsError value)?  productsError,TResult? Function( CategoriesLoading value)?  categoriesLoading,TResult? Function( CategoriesSuccess value)?  categoriesSuccess,TResult? Function( CategoriesError value)?  categoriesError,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( ProductsLoading value)?  productsLoading,TResult? Function( ProductsLoadingMore value)?  productsLoadingMore,TResult? Function( ProductsSuccess value)?  productsSuccess,TResult? Function( ProductsError value)?  productsError,TResult? Function( CategoriesLoading value)?  categoriesLoading,TResult? Function( CategoriesSuccess value)?  categoriesSuccess,TResult? Function( CategoriesError value)?  categoriesError,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case ProductsLoading() when productsLoading != null:
-return productsLoading(_that);case ProductsSuccess() when productsSuccess != null:
+return productsLoading(_that);case ProductsLoadingMore() when productsLoadingMore != null:
+return productsLoadingMore(_that);case ProductsSuccess() when productsSuccess != null:
 return productsSuccess(_that);case ProductsError() when productsError != null:
 return productsError(_that);case CategoriesLoading() when categoriesLoading != null:
 return categoriesLoading(_that);case CategoriesSuccess() when categoriesSuccess != null:
@@ -137,11 +140,12 @@ return categoriesError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  productsLoading,TResult Function( List<Product?>? productsDataList)?  productsSuccess,TResult Function( ErrorHandler errorHandler)?  productsError,TResult Function()?  categoriesLoading,TResult Function( List<Category?>? categoriesDataList)?  categoriesSuccess,TResult Function( ErrorHandler errorHandler)?  categoriesError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  productsLoading,TResult Function()?  productsLoadingMore,TResult Function( List<Product?>? productsDataList)?  productsSuccess,TResult Function( ErrorHandler errorHandler)?  productsError,TResult Function()?  categoriesLoading,TResult Function( List<Category?>? categoriesDataList)?  categoriesSuccess,TResult Function( ErrorHandler errorHandler)?  categoriesError,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case ProductsLoading() when productsLoading != null:
-return productsLoading();case ProductsSuccess() when productsSuccess != null:
+return productsLoading();case ProductsLoadingMore() when productsLoadingMore != null:
+return productsLoadingMore();case ProductsSuccess() when productsSuccess != null:
 return productsSuccess(_that.productsDataList);case ProductsError() when productsError != null:
 return productsError(_that.errorHandler);case CategoriesLoading() when categoriesLoading != null:
 return categoriesLoading();case CategoriesSuccess() when categoriesSuccess != null:
@@ -164,11 +168,12 @@ return categoriesError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  productsLoading,required TResult Function( List<Product?>? productsDataList)  productsSuccess,required TResult Function( ErrorHandler errorHandler)  productsError,required TResult Function()  categoriesLoading,required TResult Function( List<Category?>? categoriesDataList)  categoriesSuccess,required TResult Function( ErrorHandler errorHandler)  categoriesError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  productsLoading,required TResult Function()  productsLoadingMore,required TResult Function( List<Product?>? productsDataList)  productsSuccess,required TResult Function( ErrorHandler errorHandler)  productsError,required TResult Function()  categoriesLoading,required TResult Function( List<Category?>? categoriesDataList)  categoriesSuccess,required TResult Function( ErrorHandler errorHandler)  categoriesError,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case ProductsLoading():
-return productsLoading();case ProductsSuccess():
+return productsLoading();case ProductsLoadingMore():
+return productsLoadingMore();case ProductsSuccess():
 return productsSuccess(_that.productsDataList);case ProductsError():
 return productsError(_that.errorHandler);case CategoriesLoading():
 return categoriesLoading();case CategoriesSuccess():
@@ -190,11 +195,12 @@ return categoriesError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  productsLoading,TResult? Function( List<Product?>? productsDataList)?  productsSuccess,TResult? Function( ErrorHandler errorHandler)?  productsError,TResult? Function()?  categoriesLoading,TResult? Function( List<Category?>? categoriesDataList)?  categoriesSuccess,TResult? Function( ErrorHandler errorHandler)?  categoriesError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  productsLoading,TResult? Function()?  productsLoadingMore,TResult? Function( List<Product?>? productsDataList)?  productsSuccess,TResult? Function( ErrorHandler errorHandler)?  productsError,TResult? Function()?  categoriesLoading,TResult? Function( List<Category?>? categoriesDataList)?  categoriesSuccess,TResult? Function( ErrorHandler errorHandler)?  categoriesError,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case ProductsLoading() when productsLoading != null:
-return productsLoading();case ProductsSuccess() when productsSuccess != null:
+return productsLoading();case ProductsLoadingMore() when productsLoadingMore != null:
+return productsLoadingMore();case ProductsSuccess() when productsSuccess != null:
 return productsSuccess(_that.productsDataList);case ProductsError() when productsError != null:
 return productsError(_that.errorHandler);case CategoriesLoading() when categoriesLoading != null:
 return categoriesLoading();case CategoriesSuccess() when categoriesSuccess != null:
@@ -263,6 +269,38 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'HomeState.productsLoading()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ProductsLoadingMore implements HomeState {
+  const ProductsLoadingMore();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsLoadingMore);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeState.productsLoadingMore()';
 }
 
 
