@@ -20,7 +20,7 @@ class ProductsBlocBuilder extends StatelessWidget {
           productsLoading: () =>
               const Center(child: CircularProgressIndicator()),
           productsSuccess: (productsList) {
-            return setupSuccess(productsList);
+            return setupSuccess(productsList, context);
           },
           productsError: (errorHandler) => setupError(),
           orElse: () {
@@ -31,8 +31,11 @@ class ProductsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupSuccess(productsList) {
-    return ProductsGridView(productsList: productsList);
+  Widget setupSuccess(productsList, BuildContext context) {
+    return ProductsGridView(
+      productsList: productsList,
+      hasNextPage: context.read<HomeCubit>().hasNextPage,
+    );
   }
 
   Widget setupError() {

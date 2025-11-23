@@ -6,8 +6,13 @@ import '../../../data/models/products_response_model.dart';
 import '../../../logic/home_cubit.dart';
 
 class ProductsGridView extends StatelessWidget {
-  ProductsGridView({super.key, required this.productsList});
+  ProductsGridView({
+    super.key,
+    required this.productsList,
+    required this.hasNextPage,
+  });
   final List<Product?>? productsList;
+  final bool hasNextPage;
   @override
   Widget build(BuildContext context) {
     return NotificationListener<ScrollNotification>(
@@ -18,17 +23,30 @@ class ProductsGridView extends StatelessWidget {
         }
         return true;
       },
-      child: GridView.builder(
-        itemCount: productsList?.length ?? 0,
-        itemBuilder: (context, index) {
-          return ProductCard(product: productsList![index]);
-        },
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 8.h,
-          crossAxisSpacing: 10.w,
-          childAspectRatio: 0.59,
-        ),
+      child: CustomScrollView(
+        slivers: [
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate((context, index) {
+              return ProductCard(product: productsList![index]);
+            }, childCount: productsList?.length ?? 0),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 8.h,
+              crossAxisSpacing: 10.w,
+              childAspectRatio: 0.59,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: hasNextPage
+                ? SizedBox(child: Image.asset('assets/images/loading.gif',height:100.w,))
+                : SizedBox(
+                    child: Text(
+                      'No more products >_<',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+          ),
+        ],
       ),
     );
   }
