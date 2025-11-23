@@ -14,15 +14,17 @@ A modern Flutter e-commerce application for accessories shopping with a clean ar
 
 ### Shopping Experience
 
-- **Home Screen** - Browse featured products and categories
+- **Home Screen** - Browse featured products and categories with infinite scroll pagination
 - **Product Details** - Detailed product information and specifications
 - **Product Catalog** - Comprehensive product listing and browsing
+- **Infinite Scroll Pagination** - Seamless product loading as you scroll, optimized for performance and bandwidth
 
 ### Core Features
 
 - **Responsive Design** - Optimized for different screen sizes
 - **Secure Storage** - User tokens and sensitive data protection
 - **Network Caching** - Optimized image loading and caching
+- **Infinite Scroll Pagination** - Efficient data loading with automatic pagination for improved performance
 - **Shimmer Loading** - Beautiful loading animations
 - **Custom Splash Screen** - Branded app launch experience
 - **Automatic Session Management** - Intelligent token refresh mechanism that handles expired tokens transparently
@@ -228,6 +230,7 @@ The app includes configuration for:
 - **🔐 Secure Authentication** - Email verification with OTP
 - **📱 Responsive Layout** - Optimized for all screen sizes
 - **🛍️ Complete Shopping Flow** - From browsing to product details
+- **📄 Infinite Scroll Pagination** - Smooth and efficient product loading as you browse
 
 ## 🔧 Configuration
 

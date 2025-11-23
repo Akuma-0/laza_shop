@@ -12,14 +12,15 @@ class ProductsBlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       buildWhen: (previous, current) =>
-          current is ProductsLoading || 
-          current is ProductsSuccess || 
+          current is ProductsLoading ||
+          current is ProductsSuccess ||
           current is ProductsError,
       builder: (context, state) {
         return state.maybeWhen(
-          productsLoading: () => const Center(child: CircularProgressIndicator()),
+          productsLoading: () =>
+              const Center(child: CircularProgressIndicator()),
           productsSuccess: (productsList) {
-            return setupSuccess(productsList);
+            return setupSuccess(productsList, context);
           },
           productsError: (errorHandler) => setupError(),
           orElse: () {
@@ -30,12 +31,15 @@ class ProductsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupSuccess(productsList) {
-    return ProductsGridView(productsList: productsList);
+  Widget setupSuccess(productsList, BuildContext context) {
+    return ProductsGridView(
+      productsList: productsList,
+      hasNextPage: context.read<HomeCubit>().hasNextPage,
+    );
   }
 
   Widget setupError() {
-    return  Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
