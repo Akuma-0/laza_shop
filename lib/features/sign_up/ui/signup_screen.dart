@@ -7,6 +7,7 @@ import 'package:laza_shop/features/sign_up/ui/widgets/signup_form.dart';
 import '../../../core/helpers/extensions.dart';
 import '../../../core/themes/text_styles.dart';
 import '../logic/signup_cubit.dart';
+import 'widgets/password_requirements.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -42,6 +43,11 @@ class SignupScreen extends StatelessWidget {
               Text('Sign Up', style: TextStyles.font28W600),
               SizedBox(height: 50.0.h),
               SignupForm(),
+              SizedBox(height: 20.0.h),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: PasswordRequirements(),
+              ),
               SizedBox(height: 40.0.h),
               Align(
                 alignment: AlignmentGeometry.center,
