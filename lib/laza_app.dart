@@ -17,6 +17,7 @@ class LazaShopApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
+          navigatorKey: navigatorKey,
           title: 'Accessories Shop App',
           theme: getThemeDataLight(),
           darkTheme: getThemeDataDark(),
