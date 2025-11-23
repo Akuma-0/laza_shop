@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_shop/core/networking/api_result.dart';
 import 'package:laza_shop/features/home/data/models/products_response_model.dart';
@@ -13,21 +11,35 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<Product?>? productsList = [];
   List<Category?>? categoriesList = [];
+  int pageNumber = 1;
+  bool hasNextPage = true;
 
   void getProducts() async {
-    emit(const HomeState.productsLoading());
+    if (!hasNextPage ||
+        (state is ProductsLoadingMore) ||
+        (state is ProductsLoading)) {
+      return;
+    }
+    if (pageNumber == 1) {
+      emit(const HomeState.productsLoading());
+    } else {
+      emit(const HomeState.productsLoadingMore());
+    }
     final response = await _homeRepo.getProducts({
-      "pageSize": 50
+      "pageSize": 10,
+      "page": pageNumber,
     });
     response.when(
       success: (productsResponseModel) {
-        productsList = productsResponseModel.products ?? [];
+        productsList!.addAll(productsResponseModel.products ?? []);
+        hasNextPage = productsResponseModel.hasNextPage ?? false;
         emit(HomeState.productsSuccess(productsList));
       },
       failure: (errorHandler) {
         emit(HomeState.productsError(errorHandler));
       },
     );
+    pageNumber++;
   }
 
   void getCategories() async {
