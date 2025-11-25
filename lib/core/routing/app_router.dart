@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/cart/ui/cart_screen.dart';
 import '../../features/home/data/models/products_response_model.dart';
 import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/home_screen.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/login/ui/login_screen.dart';
+import '../../features/notifications/ui/notifications_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/product_details/ui/product_details_screen.dart';
 import '../../features/sign_up/logic/email_cnofirmation_cubit.dart';
@@ -19,10 +21,10 @@ class AppRouter {
     final arguments = settings.arguments;
 
     switch (settings.name) {
-      //***************************on boarding screen***********************/
+      /***************************on boarding screen***********************/
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
-      //*****************************login screen**************************/
+      /*****************************login screen**************************/
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -30,7 +32,7 @@ class AppRouter {
             child: const LoginScreen(),
           ),
         );
-      //************************sign up screen**************************/
+      /*****************************sign up screen**************************/
       case Routes.signUpScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -38,7 +40,7 @@ class AppRouter {
             child: const SignupScreen(),
           ),
         );
-      //***********************confirm email screen**********************/
+      /***************************confirm email screen***********************/
       case Routes.confirmEmailScreen:
         final email = arguments as String?;
         return MaterialPageRoute(
@@ -51,7 +53,7 @@ class AppRouter {
             arguments: email,
           ),
         );
-      //************************home screen**************************/
+      /*****************************home screen**************************/
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -62,7 +64,7 @@ class AppRouter {
           ),
         );
 
-      //************************product details screen**************************/
+      /*****************************product details screen**************************/
       case Routes.productDetailsScreen:
         final product = arguments as Product;
         return MaterialPageRoute(
@@ -72,7 +74,12 @@ class AppRouter {
             child: ,
           ),*/
         );
-
+      /************************Cart Screen**************************/
+      case Routes.cartScreen:
+        return MaterialPageRoute(builder: (_) => const CartScreen());
+      /*****************************notifications Screen**************************/
+      case Routes.notificationsScreen:
+        return MaterialPageRoute(builder: (_) => const NotificationsScreen());
       default:
         return null;
     }

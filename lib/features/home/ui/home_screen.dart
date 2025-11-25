@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:laza_shop/core/widgets/app_bottom_nav_bar.dart';
 import 'package:laza_shop/features/home/ui/widgets/categories/category_bloc_builder.dart';
 import 'package:laza_shop/features/home/ui/widgets/search_container.dart';
+import '../../../core/routing/routes.dart';
 import '../../../core/themes/text_styles.dart';
 import 'widgets/products/products_bloc_builder.dart';
 
@@ -29,14 +31,20 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 10.h),
               Text('Choose Brand', style: TextStyles.font17W500),
               SizedBox(height: 10.h),
-              SizedBox(
-                height: 60.h,
-                child: const CategoryBlocBuilder()),
+              SizedBox(height: 60.h, child: const CategoryBlocBuilder()),
               SizedBox(height: 20.h),
               const Expanded(child: ProductsBlocBuilder()),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: AppBottomNavBar(
+        routes: [
+          Routes.homeScreen,
+          Routes.cartScreen,
+          Routes.notificationsScreen,
+        ],
+        currentIndex: 0,
       ),
     );
   }
