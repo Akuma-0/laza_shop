@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 extension Navigation on BuildContext {
   Future<dynamic> pushNamed(String routeName, {Object? arguments}) {
@@ -22,6 +22,10 @@ extension Navigation on BuildContext {
   }
 
   void pop() => Navigator.of(this).pop();
+}
+
+extension ColorsScheme on BuildContext {
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }
 
 extension StringExtension on String? {
