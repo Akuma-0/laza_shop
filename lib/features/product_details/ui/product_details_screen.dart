@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:laza_shop/core/helpers/extensions.dart';
 import 'package:laza_shop/core/themes/app_color/app_color_light.dart';
 import 'package:laza_shop/core/widgets/app_bottom_bar.dart';
 import 'package:laza_shop/features/home/data/models/products_response_model.dart';
@@ -20,7 +21,7 @@ class ProductDetailsScreen extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    color: Theme.of(context).colorScheme.secondary,
+                    color: context.colorScheme.secondary,
                     width: double.infinity,
                     height: 390.h,
                     child: CachedNetworkImage(
@@ -39,11 +40,11 @@ class ProductDetailsScreen extends StatelessWidget {
                     top: 10.h,
                     left: 20.w,
                     child: CircleAvatar(
-                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      backgroundColor: context.colorScheme.surface,
                       child: IconButton(
                         icon: Icon(
                           Icons.arrow_back,
-                          color: Theme.of(context).colorScheme.onSurface,
+                          color: context.colorScheme.onSurface,
                           size: 24.sp,
                         ),
                         onPressed: () {
@@ -56,11 +57,11 @@ class ProductDetailsScreen extends StatelessWidget {
                     top: 10.h,
                     right: 20.w,
                     child: CircleAvatar(
-                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      backgroundColor: context.colorScheme.surface,
                       child: IconButton(
                         icon: Icon(
                           Icons.shopping_bag_outlined,
-                          color: Theme.of(context).colorScheme.onSurface,
+                          color: context.colorScheme.onSurface,
                           size: 24.sp,
                         ),
                         onPressed: () {

@@ -16,7 +16,7 @@ class LetsGoBox extends StatelessWidget {
       width: 345.w,
       height: 244.h,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onPrimary,
+        color: context.colorScheme.onPrimary,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Column(
@@ -25,14 +25,14 @@ class LetsGoBox extends StatelessWidget {
           Text(
             'Look Good, Feel Good',
             style: TextStyles.font25W600.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
+              color: context.colorScheme.onSurface,
             ),
           ),
           SizedBox(height: 15.h),
           Text(
             'Create your individual & unique style and look amazing everyday.',
             style: TextStyles.font15W400.copyWith(
-              color: Theme.of(context).colorScheme.onSecondary,
+              color: context.colorScheme.onSecondary,
             ),
             textAlign: TextAlign.center,
           ),
