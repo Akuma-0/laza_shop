@@ -23,7 +23,7 @@ class ConfirmEmailScreen extends StatelessWidget {
         leading: Padding(
           padding: EdgeInsetsDirectional.all(6.w),
           child: CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.onSecondary,
+            backgroundColor: context.colorScheme.onSecondary,
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -44,7 +44,7 @@ class ConfirmEmailScreen extends StatelessWidget {
             Text(
               'Enter the 6-digit code sent to your email',
               style: TextStyles.font13W500.copyWith(
-                color: Theme.of(context).colorScheme.primary,
+                color: context.colorScheme.primary,
               ),
             ),
             SizedBox(height: 10.h),
@@ -72,9 +72,9 @@ class ConfirmEmailScreen extends StatelessWidget {
                   height: 56,
                   textStyle: TextStyles.font22W500,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
+                    color: context.colorScheme.secondary,
                     border: Border.all(
-                      color: Theme.of(context).colorScheme.surfaceContainer,
+                      color: context.colorScheme.surfaceContainer,
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),

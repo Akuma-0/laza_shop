@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   'Please enter your data to continue',
                   style: TextStyles.font15W400.copyWith(
-                    color: Theme.of(context).colorScheme.onSecondary,
+                    color: context.colorScheme.onSecondary,
                   ),
                 ),
                 SizedBox(height: 50.0.h),
@@ -49,13 +49,13 @@ class LoginScreen extends StatelessWidget {
                     text: TextSpan(
                       text: 'Don\'t have an account? ',
                       style: TextStyles.font15W400.copyWith(
-                        color: Theme.of(context).colorScheme.onSecondary,
+                        color: context.colorScheme.onSecondary,
                       ),
                       children: [
                         TextSpan(
                           text: 'Sign Up',
                           style: TextStyles.font15W500.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface,
+                            color: context.colorScheme.onSurface,
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {

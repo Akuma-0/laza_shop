@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:laza_shop/core/helpers/extensions.dart';
 import 'package:laza_shop/core/themes/text_styles.dart';
 import '../../../data/models/categories_response_model.dart';
 
@@ -18,7 +19,7 @@ class CategoryCard extends StatelessWidget {
       margin: EdgeInsets.only(right: 10.w),
       padding: EdgeInsets.symmetric(horizontal: 5.w),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.secondary,
+        color: context.colorScheme.secondary,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -36,7 +37,7 @@ class CategoryCard extends StatelessWidget {
             child: Text(
               category?.name ?? 'Unknown',
               style: TextStyles.font15W500.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
+                color: context.colorScheme.onSurface,
               ),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
@@ -78,7 +79,7 @@ class CategoryCard extends StatelessWidget {
   Widget _buildErrorWidget(var context) {
     return Icon(
       Icons.image_not_supported,
-      color: Theme.of(context).colorScheme.primary,
+      color: context.colorScheme.primary,
       size: 20.sp,
     );
   }

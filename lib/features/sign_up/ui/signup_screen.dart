@@ -22,13 +22,13 @@ class SignupScreen extends StatelessWidget {
         leading: Padding(
           padding: EdgeInsetsDirectional.all(6.w),
           child: CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.surface,
+            backgroundColor: context.colorScheme.surface,
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 context.pop();
               },
-              color: Theme.of(context).colorScheme.onSurface,
+              color: context.colorScheme.onSurface,
             ),
           ),
         ),
@@ -57,13 +57,13 @@ class SignupScreen extends StatelessWidget {
                     text:
                         'By connecting your account confirm that you agree with our ',
                     style: TextStyles.font13W400.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondary,
+                      color: context.colorScheme.onSecondary,
                     ),
                     children: [
                       TextSpan(
                         text: 'Terms & Conditions',
                         style: TextStyles.font13W500.copyWith(
-                          color: Theme.of(context).colorScheme.onSurface,
+                          color: context.colorScheme.onSurface,
                         ),
                       ),
                     ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../helpers/extensions.dart';
 import '../themes/text_styles.dart';
 
 class AppTextFormField extends StatelessWidget {
@@ -42,7 +43,7 @@ class AppTextFormField extends StatelessWidget {
             focusedBorder ??
             OutlineInputBorder(
               borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
+                color: context.colorScheme.primary,
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(10.0),
@@ -51,7 +52,7 @@ class AppTextFormField extends StatelessWidget {
             enabledBorder ??
             OutlineInputBorder(
               borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.surfaceContainer,
+                color: context.colorScheme.surfaceContainer,
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(10.0),
@@ -67,11 +68,11 @@ class AppTextFormField extends StatelessWidget {
         hintStyle:
             hintStyle ??
             TextStyles.font13W400.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
+              color: context.colorScheme.onSurface,
             ),
         hintText: hintText,
         suffixIcon: suffixIcon,
-        fillColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
+        fillColor: backgroundColor ?? context.colorScheme.surface,
         filled: true,
       ),
       obscureText: isObscureText ?? false,

@@ -33,7 +33,7 @@ class ProductCard extends StatelessWidget {
                     height: 203.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
-                      color: Theme.of(context).colorScheme.surfaceContainer,
+                      color: context.colorScheme.surfaceContainer,
                     ),
                     child: CachedNetworkImage(
                       imageUrl: product?.imageUrl ?? '',
@@ -43,7 +43,7 @@ class ProductCard extends StatelessWidget {
                       fit: BoxFit.cover,
                       errorWidget: (context, url, error) => Icon(
                         Icons.image_not_supported,
-                        color: Theme.of(context).colorScheme.primary,
+                        color: context.colorScheme.primary,
                         size: 40.sp,
                       ),
                       width: 160.w,
@@ -59,7 +59,7 @@ class ProductCard extends StatelessWidget {
                       },
                       child: Icon(
                         Icons.favorite_border,
-                        color: Theme.of(context).colorScheme.onSecondary,
+                        color: context.colorScheme.onSecondary,
                       ),
                     ),
                   ),
