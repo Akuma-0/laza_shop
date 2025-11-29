@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/core/helpers/extensions.dart';
+import 'package:laza_shop/core/routing/routes.dart';
 import 'package:laza_shop/core/themes/app_color/app_color_light.dart';
 import 'package:laza_shop/core/widgets/app_bottom_bar.dart';
 import 'package:laza_shop/features/home/data/models/products_response_model.dart';
@@ -65,7 +66,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           size: 24.sp,
                         ),
                         onPressed: () {
-                          // Handle cart button press
+                          context.pushNamed(Routes.cartScreen);
                         },
                       ),
                     ),

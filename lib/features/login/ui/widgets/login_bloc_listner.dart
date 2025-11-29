@@ -28,8 +28,11 @@ class LoginBlocListener extends StatelessWidget {
             );
           },
           success: (loginResponse) {
-            context.pop();
-            context.pushNamed(Routes.homeScreen);
+            context.pushNamedAndRemoveUntil(
+              Routes.homeScreen,
+              
+              predicate: (Route<dynamic> route) => false,
+            );
           },
           error: (error) {
             setupErrorState(context, error);
