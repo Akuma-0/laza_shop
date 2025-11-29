@@ -42,6 +42,10 @@ class TextStyles {
     fontSize: 11.sp,
     fontWeight: FontWeight.w500,
   );
+    static TextStyle font11W400 = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
+  );
   static TextStyle font25W600 = TextStyle(
     fontSize: 25.sp,
     fontWeight: FontWeight.w600,
