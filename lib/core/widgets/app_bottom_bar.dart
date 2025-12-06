@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../themes/app_color/app_color_light.dart';
+import '../helpers/extensions.dart';
 import '../themes/text_styles.dart';
 
 class AppBottomBar extends StatelessWidget {
@@ -15,13 +15,16 @@ class AppBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      elevation: 0,
+
       padding: EdgeInsets.zero,
+      color: context.colorScheme.primary,
       child: GestureDetector(
         onTap: onTap,
         child: Container(
           width: double.infinity,
           padding: EdgeInsets.all(20.0.w),
-          decoration: BoxDecoration(color: AppColorLight.primaryColor),
+          decoration: BoxDecoration(color: context.colorScheme.primary),
           child: Text(
             buttonText,
             textAlign: TextAlign.center,
