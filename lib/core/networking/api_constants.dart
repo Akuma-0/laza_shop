@@ -5,6 +5,8 @@ class ApiConstants {
   static const String signup = "auth/register";
   static const String verifyEmail = "auth/verify-email";
   static const String refreshToken = "auth/refresh-token";
+  // POST, BODY contains productId and quantity
+  static const String addToCart = "cart/items";
 }
 
 class ApiErrors {

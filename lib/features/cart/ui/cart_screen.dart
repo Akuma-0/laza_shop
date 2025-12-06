@@ -5,7 +5,6 @@ import '../../../core/routing/routes.dart';
 import '../../../core/themes/text_styles.dart';
 import '../../../core/widgets/app_bottom_nav_bar.dart';
 
-
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
@@ -17,15 +16,13 @@ class CartScreen extends StatelessWidget {
         title: Text('Cart', style: TextStyles.font17W600),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            children: [
-              SizedBox(height: 10.h),
-              Expanded(child: CartBlocBuilder()),
-            ],
-          ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        child: Column(
+          children: [
+            SizedBox(height: 10.h),
+            Expanded(child: CartBlocBuilder()),
+          ],
         ),
       ),
       bottomNavigationBar: AppBottomNavBar(

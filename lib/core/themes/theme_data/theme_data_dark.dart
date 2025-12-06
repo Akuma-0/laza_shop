@@ -5,6 +5,11 @@ import '../app_color/app_color_dark.dart';
 ThemeData getThemeDataDark() => ThemeData(
   primaryColor: AppColorDark.primaryColor,
   scaffoldBackgroundColor: AppColorDark.onPrimaryColor,
+  appBarTheme: AppBarTheme(
+    scrolledUnderElevation: 0,
+    elevation: 0,
+    backgroundColor: AppColorDark.secondaryColor,
+  ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
       shape: WidgetStateProperty.all<RoundedRectangleBorder>(
