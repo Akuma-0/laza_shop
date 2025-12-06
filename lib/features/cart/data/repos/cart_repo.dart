@@ -17,4 +17,17 @@ class CartRepo {
       return ApiResult.failure(ErrorHandler.handle(error));
     }
   }
+  Future<ApiResult<void>> deleteCartItem(String itemId) async {
+    try {
+      final response = await _apiService.deleteCartItem(
+        itemId,
+        'application/json',
+        'application/json',
+        {},
+      );
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
 }

@@ -21,4 +21,18 @@ class CartCubit extends Cubit<CartState> {
       },
     );
   }
+  void deleteCartItem(String itemId) async {
+    emit(CartState.cartItemDeleting());
+    final response = await _cartRepo.deleteCartItem(itemId);
+    response.when(
+      success: (_) {
+        cartItems?.removeWhere((item) => item.itemId == itemId);
+        emit(CartState.cartItemDeleteSuccess());
+        emit(CartState.cartItemsSuccess(cartItems));
+      },
+      failure: (errorHandler) {
+        emit(CartState.cartItemDeleteError(errorHandler));
+      },
+    );
+  }
 }

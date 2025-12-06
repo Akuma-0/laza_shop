@@ -16,6 +16,13 @@ abstract class CartApiServices {
     @Header('Content-Type') String contentType,
     @Header('Accept') String accept,
   );
+    @DELETE('${CartApiConstants.deleteItemEP}{itemId}')
+  Future<void> deleteCartItem(
+    @Path('itemId') String itemId,
+    @Header('Content-Type') String contentType,
+    @Header('Accept') String accept,
+    @Body() Map<String, dynamic> body,
+  );
 }
 
 

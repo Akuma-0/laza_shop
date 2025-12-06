@@ -65,6 +65,7 @@ class _CartApiServices implements CartApiServices {
     String itemId,
     String contentType,
     String accept,
+    Map<String, dynamic> body,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -73,7 +74,8 @@ class _CartApiServices implements CartApiServices {
       r'Accept': accept,
     };
     _headers.removeWhere((k, v) => v == null);
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
     final _options = _setStreamType<void>(
       Options(
             method: 'DELETE',

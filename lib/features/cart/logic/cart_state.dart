@@ -14,4 +14,8 @@ class CartState with _$CartState {
   ) = CartItemsSuccess;
   const factory CartState.cartItemsError(ErrorHandler errorHandler) =
       CartItemsError;
+  const factory CartState.cartItemDeleting() = CartItemDeleting;
+  const factory CartState.cartItemDeleteSuccess() = CartItemDeleteSuccess;
+  const factory CartState.cartItemDeleteError(ErrorHandler errorHandler) =
+      CartItemDeleteError;
 }

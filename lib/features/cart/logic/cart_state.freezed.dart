@@ -55,14 +55,17 @@ extension CartStatePatterns on CartState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( CartItemsLoading value)?  cartItemsLoading,TResult Function( CartItemsSuccess value)?  cartItemsSuccess,TResult Function( CartItemsError value)?  cartItemsError,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( CartItemsLoading value)?  cartItemsLoading,TResult Function( CartItemsSuccess value)?  cartItemsSuccess,TResult Function( CartItemsError value)?  cartItemsError,TResult Function( CartItemDeleting value)?  cartItemDeleting,TResult Function( CartItemDeleteSuccess value)?  cartItemDeleteSuccess,TResult Function( CartItemDeleteError value)?  cartItemDeleteError,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case CartItemsLoading() when cartItemsLoading != null:
 return cartItemsLoading(_that);case CartItemsSuccess() when cartItemsSuccess != null:
 return cartItemsSuccess(_that);case CartItemsError() when cartItemsError != null:
-return cartItemsError(_that);case _:
+return cartItemsError(_that);case CartItemDeleting() when cartItemDeleting != null:
+return cartItemDeleting(_that);case CartItemDeleteSuccess() when cartItemDeleteSuccess != null:
+return cartItemDeleteSuccess(_that);case CartItemDeleteError() when cartItemDeleteError != null:
+return cartItemDeleteError(_that);case _:
   return orElse();
 
 }
@@ -80,14 +83,17 @@ return cartItemsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( CartItemsLoading value)  cartItemsLoading,required TResult Function( CartItemsSuccess value)  cartItemsSuccess,required TResult Function( CartItemsError value)  cartItemsError,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( CartItemsLoading value)  cartItemsLoading,required TResult Function( CartItemsSuccess value)  cartItemsSuccess,required TResult Function( CartItemsError value)  cartItemsError,required TResult Function( CartItemDeleting value)  cartItemDeleting,required TResult Function( CartItemDeleteSuccess value)  cartItemDeleteSuccess,required TResult Function( CartItemDeleteError value)  cartItemDeleteError,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case CartItemsLoading():
 return cartItemsLoading(_that);case CartItemsSuccess():
 return cartItemsSuccess(_that);case CartItemsError():
-return cartItemsError(_that);case _:
+return cartItemsError(_that);case CartItemDeleting():
+return cartItemDeleting(_that);case CartItemDeleteSuccess():
+return cartItemDeleteSuccess(_that);case CartItemDeleteError():
+return cartItemDeleteError(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -104,14 +110,17 @@ return cartItemsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( CartItemsLoading value)?  cartItemsLoading,TResult? Function( CartItemsSuccess value)?  cartItemsSuccess,TResult? Function( CartItemsError value)?  cartItemsError,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( CartItemsLoading value)?  cartItemsLoading,TResult? Function( CartItemsSuccess value)?  cartItemsSuccess,TResult? Function( CartItemsError value)?  cartItemsError,TResult? Function( CartItemDeleting value)?  cartItemDeleting,TResult? Function( CartItemDeleteSuccess value)?  cartItemDeleteSuccess,TResult? Function( CartItemDeleteError value)?  cartItemDeleteError,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case CartItemsLoading() when cartItemsLoading != null:
 return cartItemsLoading(_that);case CartItemsSuccess() when cartItemsSuccess != null:
 return cartItemsSuccess(_that);case CartItemsError() when cartItemsError != null:
-return cartItemsError(_that);case _:
+return cartItemsError(_that);case CartItemDeleting() when cartItemDeleting != null:
+return cartItemDeleting(_that);case CartItemDeleteSuccess() when cartItemDeleteSuccess != null:
+return cartItemDeleteSuccess(_that);case CartItemDeleteError() when cartItemDeleteError != null:
+return cartItemDeleteError(_that);case _:
   return null;
 
 }
@@ -128,13 +137,16 @@ return cartItemsError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  cartItemsLoading,TResult Function( List<CartItem>? cartItemsDataList)?  cartItemsSuccess,TResult Function( ErrorHandler errorHandler)?  cartItemsError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  cartItemsLoading,TResult Function( List<CartItem>? cartItemsDataList)?  cartItemsSuccess,TResult Function( ErrorHandler errorHandler)?  cartItemsError,TResult Function()?  cartItemDeleting,TResult Function()?  cartItemDeleteSuccess,TResult Function( ErrorHandler errorHandler)?  cartItemDeleteError,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case CartItemsLoading() when cartItemsLoading != null:
 return cartItemsLoading();case CartItemsSuccess() when cartItemsSuccess != null:
 return cartItemsSuccess(_that.cartItemsDataList);case CartItemsError() when cartItemsError != null:
-return cartItemsError(_that.errorHandler);case _:
+return cartItemsError(_that.errorHandler);case CartItemDeleting() when cartItemDeleting != null:
+return cartItemDeleting();case CartItemDeleteSuccess() when cartItemDeleteSuccess != null:
+return cartItemDeleteSuccess();case CartItemDeleteError() when cartItemDeleteError != null:
+return cartItemDeleteError(_that.errorHandler);case _:
   return orElse();
 
 }
@@ -152,13 +164,16 @@ return cartItemsError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  cartItemsLoading,required TResult Function( List<CartItem>? cartItemsDataList)  cartItemsSuccess,required TResult Function( ErrorHandler errorHandler)  cartItemsError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  cartItemsLoading,required TResult Function( List<CartItem>? cartItemsDataList)  cartItemsSuccess,required TResult Function( ErrorHandler errorHandler)  cartItemsError,required TResult Function()  cartItemDeleting,required TResult Function()  cartItemDeleteSuccess,required TResult Function( ErrorHandler errorHandler)  cartItemDeleteError,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case CartItemsLoading():
 return cartItemsLoading();case CartItemsSuccess():
 return cartItemsSuccess(_that.cartItemsDataList);case CartItemsError():
-return cartItemsError(_that.errorHandler);case _:
+return cartItemsError(_that.errorHandler);case CartItemDeleting():
+return cartItemDeleting();case CartItemDeleteSuccess():
+return cartItemDeleteSuccess();case CartItemDeleteError():
+return cartItemDeleteError(_that.errorHandler);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +190,16 @@ return cartItemsError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  cartItemsLoading,TResult? Function( List<CartItem>? cartItemsDataList)?  cartItemsSuccess,TResult? Function( ErrorHandler errorHandler)?  cartItemsError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  cartItemsLoading,TResult? Function( List<CartItem>? cartItemsDataList)?  cartItemsSuccess,TResult? Function( ErrorHandler errorHandler)?  cartItemsError,TResult? Function()?  cartItemDeleting,TResult? Function()?  cartItemDeleteSuccess,TResult? Function( ErrorHandler errorHandler)?  cartItemDeleteError,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case CartItemsLoading() when cartItemsLoading != null:
 return cartItemsLoading();case CartItemsSuccess() when cartItemsSuccess != null:
 return cartItemsSuccess(_that.cartItemsDataList);case CartItemsError() when cartItemsError != null:
-return cartItemsError(_that.errorHandler);case _:
+return cartItemsError(_that.errorHandler);case CartItemDeleting() when cartItemDeleting != null:
+return cartItemDeleting();case CartItemDeleteSuccess() when cartItemDeleteSuccess != null:
+return cartItemDeleteSuccess();case CartItemDeleteError() when cartItemDeleteError != null:
+return cartItemDeleteError(_that.errorHandler);case _:
   return null;
 
 }
@@ -385,6 +403,136 @@ class _$CartItemsErrorCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
   return _then(CartItemsError(
+null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
+as ErrorHandler,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CartItemDeleting implements CartState {
+  const CartItemDeleting();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartItemDeleting);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CartState.cartItemDeleting()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CartItemDeleteSuccess implements CartState {
+  const CartItemDeleteSuccess();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartItemDeleteSuccess);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CartState.cartItemDeleteSuccess()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CartItemDeleteError implements CartState {
+  const CartItemDeleteError(this.errorHandler);
+  
+
+ final  ErrorHandler errorHandler;
+
+/// Create a copy of CartState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CartItemDeleteErrorCopyWith<CartItemDeleteError> get copyWith => _$CartItemDeleteErrorCopyWithImpl<CartItemDeleteError>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartItemDeleteError&&(identical(other.errorHandler, errorHandler) || other.errorHandler == errorHandler));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,errorHandler);
+
+@override
+String toString() {
+  return 'CartState.cartItemDeleteError(errorHandler: $errorHandler)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CartItemDeleteErrorCopyWith<$Res> implements $CartStateCopyWith<$Res> {
+  factory $CartItemDeleteErrorCopyWith(CartItemDeleteError value, $Res Function(CartItemDeleteError) _then) = _$CartItemDeleteErrorCopyWithImpl;
+@useResult
+$Res call({
+ ErrorHandler errorHandler
+});
+
+
+
+
+}
+/// @nodoc
+class _$CartItemDeleteErrorCopyWithImpl<$Res>
+    implements $CartItemDeleteErrorCopyWith<$Res> {
+  _$CartItemDeleteErrorCopyWithImpl(this._self, this._then);
+
+  final CartItemDeleteError _self;
+  final $Res Function(CartItemDeleteError) _then;
+
+/// Create a copy of CartState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
+  return _then(CartItemDeleteError(
 null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
 as ErrorHandler,
   ));
