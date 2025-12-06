@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:laza_shop/core/helpers/extensions.dart';
 import 'package:laza_shop/features/cart/ui/widgets/cart_items_list_view.dart';
 import '../../../../core/themes/text_styles.dart';
 import '../../logic/cart_cubit.dart';
@@ -26,6 +27,8 @@ class CartBlocBuilder extends StatelessWidget {
                 Expanded(child: CartItemsListView(cartItems: cartItems ?? [])),
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 15.h),
+                  margin: EdgeInsets.symmetric(vertical: 10.h),
+                  color: context.colorScheme.secondary,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

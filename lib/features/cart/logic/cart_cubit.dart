@@ -18,6 +18,8 @@ class CartCubit extends Cubit<CartState> {
         totalPrice += (item.totalPrice);
       }
     }
+    totalPrice =
+        ((totalPrice * 100).roundToDouble()) / 100; // Round to 2 decimal places
   }
 
   void getCartItems() async {

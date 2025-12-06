@@ -75,7 +75,7 @@ class DioFactory {
                 ),
               );
             }
-            final apiService = ApiService(DioFactory.getDio());
+            final apiService = ApiServices(DioFactory.getDio());
             try {
               final response = await apiService.refreshToken({
                 'refreshToken': refreshToken,

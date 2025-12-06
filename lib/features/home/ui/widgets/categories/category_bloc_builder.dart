@@ -47,6 +47,8 @@ class CategoryBlocBuilder extends StatelessWidget {
           Text(
             'Please check your internet connection',
             style: TextStyle(fontSize: 14, color: Colors.grey),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
