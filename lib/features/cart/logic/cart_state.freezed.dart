@@ -55,7 +55,7 @@ extension CartStatePatterns on CartState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( CartItemsLoading value)?  cartItemsLoading,TResult Function( CartItemsSuccess value)?  cartItemsSuccess,TResult Function( CartItemsError value)?  cartItemsError,TResult Function( CartItemDeleting value)?  cartItemDeleting,TResult Function( CartItemDeleteSuccess value)?  cartItemDeleteSuccess,TResult Function( CartItemDeleteError value)?  cartItemDeleteError,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( CartItemsLoading value)?  cartItemsLoading,TResult Function( CartItemsSuccess value)?  cartItemsSuccess,TResult Function( CartItemsError value)?  cartItemsError,TResult Function( CartItemDeleting value)?  cartItemDeleting,TResult Function( CartItemDeleteSuccess value)?  cartItemDeleteSuccess,TResult Function( CartItemDeleteError value)?  cartItemDeleteError,TResult Function( CartItemCountUpdating value)?  cartItemCountUpdating,TResult Function( CartItemCountUpdateSuccess value)?  cartItemCountUpdateSuccess,TResult Function( CartItemCountUpdateError value)?  cartItemCountUpdateError,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -65,7 +65,10 @@ return cartItemsSuccess(_that);case CartItemsError() when cartItemsError != null
 return cartItemsError(_that);case CartItemDeleting() when cartItemDeleting != null:
 return cartItemDeleting(_that);case CartItemDeleteSuccess() when cartItemDeleteSuccess != null:
 return cartItemDeleteSuccess(_that);case CartItemDeleteError() when cartItemDeleteError != null:
-return cartItemDeleteError(_that);case _:
+return cartItemDeleteError(_that);case CartItemCountUpdating() when cartItemCountUpdating != null:
+return cartItemCountUpdating(_that);case CartItemCountUpdateSuccess() when cartItemCountUpdateSuccess != null:
+return cartItemCountUpdateSuccess(_that);case CartItemCountUpdateError() when cartItemCountUpdateError != null:
+return cartItemCountUpdateError(_that);case _:
   return orElse();
 
 }
@@ -83,7 +86,7 @@ return cartItemDeleteError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( CartItemsLoading value)  cartItemsLoading,required TResult Function( CartItemsSuccess value)  cartItemsSuccess,required TResult Function( CartItemsError value)  cartItemsError,required TResult Function( CartItemDeleting value)  cartItemDeleting,required TResult Function( CartItemDeleteSuccess value)  cartItemDeleteSuccess,required TResult Function( CartItemDeleteError value)  cartItemDeleteError,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( CartItemsLoading value)  cartItemsLoading,required TResult Function( CartItemsSuccess value)  cartItemsSuccess,required TResult Function( CartItemsError value)  cartItemsError,required TResult Function( CartItemDeleting value)  cartItemDeleting,required TResult Function( CartItemDeleteSuccess value)  cartItemDeleteSuccess,required TResult Function( CartItemDeleteError value)  cartItemDeleteError,required TResult Function( CartItemCountUpdating value)  cartItemCountUpdating,required TResult Function( CartItemCountUpdateSuccess value)  cartItemCountUpdateSuccess,required TResult Function( CartItemCountUpdateError value)  cartItemCountUpdateError,}){
 final _that = this;
 switch (_that) {
 case _Initial():
@@ -93,7 +96,10 @@ return cartItemsSuccess(_that);case CartItemsError():
 return cartItemsError(_that);case CartItemDeleting():
 return cartItemDeleting(_that);case CartItemDeleteSuccess():
 return cartItemDeleteSuccess(_that);case CartItemDeleteError():
-return cartItemDeleteError(_that);case _:
+return cartItemDeleteError(_that);case CartItemCountUpdating():
+return cartItemCountUpdating(_that);case CartItemCountUpdateSuccess():
+return cartItemCountUpdateSuccess(_that);case CartItemCountUpdateError():
+return cartItemCountUpdateError(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -110,7 +116,7 @@ return cartItemDeleteError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( CartItemsLoading value)?  cartItemsLoading,TResult? Function( CartItemsSuccess value)?  cartItemsSuccess,TResult? Function( CartItemsError value)?  cartItemsError,TResult? Function( CartItemDeleting value)?  cartItemDeleting,TResult? Function( CartItemDeleteSuccess value)?  cartItemDeleteSuccess,TResult? Function( CartItemDeleteError value)?  cartItemDeleteError,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( CartItemsLoading value)?  cartItemsLoading,TResult? Function( CartItemsSuccess value)?  cartItemsSuccess,TResult? Function( CartItemsError value)?  cartItemsError,TResult? Function( CartItemDeleting value)?  cartItemDeleting,TResult? Function( CartItemDeleteSuccess value)?  cartItemDeleteSuccess,TResult? Function( CartItemDeleteError value)?  cartItemDeleteError,TResult? Function( CartItemCountUpdating value)?  cartItemCountUpdating,TResult? Function( CartItemCountUpdateSuccess value)?  cartItemCountUpdateSuccess,TResult? Function( CartItemCountUpdateError value)?  cartItemCountUpdateError,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -120,7 +126,10 @@ return cartItemsSuccess(_that);case CartItemsError() when cartItemsError != null
 return cartItemsError(_that);case CartItemDeleting() when cartItemDeleting != null:
 return cartItemDeleting(_that);case CartItemDeleteSuccess() when cartItemDeleteSuccess != null:
 return cartItemDeleteSuccess(_that);case CartItemDeleteError() when cartItemDeleteError != null:
-return cartItemDeleteError(_that);case _:
+return cartItemDeleteError(_that);case CartItemCountUpdating() when cartItemCountUpdating != null:
+return cartItemCountUpdating(_that);case CartItemCountUpdateSuccess() when cartItemCountUpdateSuccess != null:
+return cartItemCountUpdateSuccess(_that);case CartItemCountUpdateError() when cartItemCountUpdateError != null:
+return cartItemCountUpdateError(_that);case _:
   return null;
 
 }
@@ -137,7 +146,7 @@ return cartItemDeleteError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  cartItemsLoading,TResult Function( List<CartItem>? cartItemsDataList)?  cartItemsSuccess,TResult Function( ErrorHandler errorHandler)?  cartItemsError,TResult Function()?  cartItemDeleting,TResult Function()?  cartItemDeleteSuccess,TResult Function( ErrorHandler errorHandler)?  cartItemDeleteError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  cartItemsLoading,TResult Function( List<CartItem>? cartItemsDataList)?  cartItemsSuccess,TResult Function( ErrorHandler errorHandler)?  cartItemsError,TResult Function()?  cartItemDeleting,TResult Function()?  cartItemDeleteSuccess,TResult Function( ErrorHandler errorHandler)?  cartItemDeleteError,TResult Function()?  cartItemCountUpdating,TResult Function( UpdateItemCountResponseModel updateItemCountResponseModel)?  cartItemCountUpdateSuccess,TResult Function( ErrorHandler errorHandler)?  cartItemCountUpdateError,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case CartItemsLoading() when cartItemsLoading != null:
@@ -146,7 +155,10 @@ return cartItemsSuccess(_that.cartItemsDataList);case CartItemsError() when cart
 return cartItemsError(_that.errorHandler);case CartItemDeleting() when cartItemDeleting != null:
 return cartItemDeleting();case CartItemDeleteSuccess() when cartItemDeleteSuccess != null:
 return cartItemDeleteSuccess();case CartItemDeleteError() when cartItemDeleteError != null:
-return cartItemDeleteError(_that.errorHandler);case _:
+return cartItemDeleteError(_that.errorHandler);case CartItemCountUpdating() when cartItemCountUpdating != null:
+return cartItemCountUpdating();case CartItemCountUpdateSuccess() when cartItemCountUpdateSuccess != null:
+return cartItemCountUpdateSuccess(_that.updateItemCountResponseModel);case CartItemCountUpdateError() when cartItemCountUpdateError != null:
+return cartItemCountUpdateError(_that.errorHandler);case _:
   return orElse();
 
 }
@@ -164,7 +176,7 @@ return cartItemDeleteError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  cartItemsLoading,required TResult Function( List<CartItem>? cartItemsDataList)  cartItemsSuccess,required TResult Function( ErrorHandler errorHandler)  cartItemsError,required TResult Function()  cartItemDeleting,required TResult Function()  cartItemDeleteSuccess,required TResult Function( ErrorHandler errorHandler)  cartItemDeleteError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  cartItemsLoading,required TResult Function( List<CartItem>? cartItemsDataList)  cartItemsSuccess,required TResult Function( ErrorHandler errorHandler)  cartItemsError,required TResult Function()  cartItemDeleting,required TResult Function()  cartItemDeleteSuccess,required TResult Function( ErrorHandler errorHandler)  cartItemDeleteError,required TResult Function()  cartItemCountUpdating,required TResult Function( UpdateItemCountResponseModel updateItemCountResponseModel)  cartItemCountUpdateSuccess,required TResult Function( ErrorHandler errorHandler)  cartItemCountUpdateError,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case CartItemsLoading():
@@ -173,7 +185,10 @@ return cartItemsSuccess(_that.cartItemsDataList);case CartItemsError():
 return cartItemsError(_that.errorHandler);case CartItemDeleting():
 return cartItemDeleting();case CartItemDeleteSuccess():
 return cartItemDeleteSuccess();case CartItemDeleteError():
-return cartItemDeleteError(_that.errorHandler);case _:
+return cartItemDeleteError(_that.errorHandler);case CartItemCountUpdating():
+return cartItemCountUpdating();case CartItemCountUpdateSuccess():
+return cartItemCountUpdateSuccess(_that.updateItemCountResponseModel);case CartItemCountUpdateError():
+return cartItemCountUpdateError(_that.errorHandler);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -190,7 +205,7 @@ return cartItemDeleteError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  cartItemsLoading,TResult? Function( List<CartItem>? cartItemsDataList)?  cartItemsSuccess,TResult? Function( ErrorHandler errorHandler)?  cartItemsError,TResult? Function()?  cartItemDeleting,TResult? Function()?  cartItemDeleteSuccess,TResult? Function( ErrorHandler errorHandler)?  cartItemDeleteError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  cartItemsLoading,TResult? Function( List<CartItem>? cartItemsDataList)?  cartItemsSuccess,TResult? Function( ErrorHandler errorHandler)?  cartItemsError,TResult? Function()?  cartItemDeleting,TResult? Function()?  cartItemDeleteSuccess,TResult? Function( ErrorHandler errorHandler)?  cartItemDeleteError,TResult? Function()?  cartItemCountUpdating,TResult? Function( UpdateItemCountResponseModel updateItemCountResponseModel)?  cartItemCountUpdateSuccess,TResult? Function( ErrorHandler errorHandler)?  cartItemCountUpdateError,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case CartItemsLoading() when cartItemsLoading != null:
@@ -199,7 +214,10 @@ return cartItemsSuccess(_that.cartItemsDataList);case CartItemsError() when cart
 return cartItemsError(_that.errorHandler);case CartItemDeleting() when cartItemDeleting != null:
 return cartItemDeleting();case CartItemDeleteSuccess() when cartItemDeleteSuccess != null:
 return cartItemDeleteSuccess();case CartItemDeleteError() when cartItemDeleteError != null:
-return cartItemDeleteError(_that.errorHandler);case _:
+return cartItemDeleteError(_that.errorHandler);case CartItemCountUpdating() when cartItemCountUpdating != null:
+return cartItemCountUpdating();case CartItemCountUpdateSuccess() when cartItemCountUpdateSuccess != null:
+return cartItemCountUpdateSuccess(_that.updateItemCountResponseModel);case CartItemCountUpdateError() when cartItemCountUpdateError != null:
+return cartItemCountUpdateError(_that.errorHandler);case _:
   return null;
 
 }
@@ -533,6 +551,170 @@ class _$CartItemDeleteErrorCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
   return _then(CartItemDeleteError(
+null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
+as ErrorHandler,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CartItemCountUpdating implements CartState {
+  const CartItemCountUpdating();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartItemCountUpdating);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CartState.cartItemCountUpdating()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CartItemCountUpdateSuccess implements CartState {
+  const CartItemCountUpdateSuccess(this.updateItemCountResponseModel);
+  
+
+ final  UpdateItemCountResponseModel updateItemCountResponseModel;
+
+/// Create a copy of CartState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CartItemCountUpdateSuccessCopyWith<CartItemCountUpdateSuccess> get copyWith => _$CartItemCountUpdateSuccessCopyWithImpl<CartItemCountUpdateSuccess>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartItemCountUpdateSuccess&&(identical(other.updateItemCountResponseModel, updateItemCountResponseModel) || other.updateItemCountResponseModel == updateItemCountResponseModel));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,updateItemCountResponseModel);
+
+@override
+String toString() {
+  return 'CartState.cartItemCountUpdateSuccess(updateItemCountResponseModel: $updateItemCountResponseModel)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CartItemCountUpdateSuccessCopyWith<$Res> implements $CartStateCopyWith<$Res> {
+  factory $CartItemCountUpdateSuccessCopyWith(CartItemCountUpdateSuccess value, $Res Function(CartItemCountUpdateSuccess) _then) = _$CartItemCountUpdateSuccessCopyWithImpl;
+@useResult
+$Res call({
+ UpdateItemCountResponseModel updateItemCountResponseModel
+});
+
+
+
+
+}
+/// @nodoc
+class _$CartItemCountUpdateSuccessCopyWithImpl<$Res>
+    implements $CartItemCountUpdateSuccessCopyWith<$Res> {
+  _$CartItemCountUpdateSuccessCopyWithImpl(this._self, this._then);
+
+  final CartItemCountUpdateSuccess _self;
+  final $Res Function(CartItemCountUpdateSuccess) _then;
+
+/// Create a copy of CartState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? updateItemCountResponseModel = null,}) {
+  return _then(CartItemCountUpdateSuccess(
+null == updateItemCountResponseModel ? _self.updateItemCountResponseModel : updateItemCountResponseModel // ignore: cast_nullable_to_non_nullable
+as UpdateItemCountResponseModel,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CartItemCountUpdateError implements CartState {
+  const CartItemCountUpdateError(this.errorHandler);
+  
+
+ final  ErrorHandler errorHandler;
+
+/// Create a copy of CartState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CartItemCountUpdateErrorCopyWith<CartItemCountUpdateError> get copyWith => _$CartItemCountUpdateErrorCopyWithImpl<CartItemCountUpdateError>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartItemCountUpdateError&&(identical(other.errorHandler, errorHandler) || other.errorHandler == errorHandler));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,errorHandler);
+
+@override
+String toString() {
+  return 'CartState.cartItemCountUpdateError(errorHandler: $errorHandler)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CartItemCountUpdateErrorCopyWith<$Res> implements $CartStateCopyWith<$Res> {
+  factory $CartItemCountUpdateErrorCopyWith(CartItemCountUpdateError value, $Res Function(CartItemCountUpdateError) _then) = _$CartItemCountUpdateErrorCopyWithImpl;
+@useResult
+$Res call({
+ ErrorHandler errorHandler
+});
+
+
+
+
+}
+/// @nodoc
+class _$CartItemCountUpdateErrorCopyWithImpl<$Res>
+    implements $CartItemCountUpdateErrorCopyWith<$Res> {
+  _$CartItemCountUpdateErrorCopyWithImpl(this._self, this._then);
+
+  final CartItemCountUpdateError _self;
+  final $Res Function(CartItemCountUpdateError) _then;
+
+/// Create a copy of CartState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? errorHandler = null,}) {
+  return _then(CartItemCountUpdateError(
 null == errorHandler ? _self.errorHandler : errorHandler // ignore: cast_nullable_to_non_nullable
 as ErrorHandler,
   ));

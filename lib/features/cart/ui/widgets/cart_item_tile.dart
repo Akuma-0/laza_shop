@@ -6,6 +6,7 @@ import 'package:laza_shop/core/helpers/extensions.dart';
 import 'package:laza_shop/features/cart/data/models/cart_response_model.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/themes/text_styles.dart';
+import '../../data/models/update_item_count_request_body.dart';
 import '../../logic/cart_cubit.dart';
 
 class CartItemTile extends StatefulWidget {
@@ -80,7 +81,20 @@ class _CartItemTileState extends State<CartItemTile> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          setState(() {
+                            isLoading = true;
+                          });
+                          context.read<CartCubit>().updateCartItemCount(
+                            widget.cartItem.itemId,
+                            UpdateItemCountRequestBody(
+                              quantity: widget.cartItem.quantity + 1,
+                            ),
+                          );
+                          setState(() {
+                            isLoading = false;
+                          });
+                        },
                         icon: Icon(Icons.arrow_drop_up_outlined),
                       ),
                       Text(
@@ -88,7 +102,20 @@ class _CartItemTileState extends State<CartItemTile> {
                         style: TextStyles.font13W600,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          setState(() {
+                            isLoading = true;
+                          });
+                          context.read<CartCubit>().updateCartItemCount(
+                            widget.cartItem.itemId,
+                            UpdateItemCountRequestBody(
+                              quantity: widget.cartItem.quantity - 1,
+                            ),
+                          );
+                          setState(() {
+                            isLoading = false;
+                          });
+                        },
                         icon: Icon(Icons.arrow_drop_down_outlined),
                       ),
                       Spacer(),
