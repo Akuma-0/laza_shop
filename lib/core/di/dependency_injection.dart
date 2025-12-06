@@ -1,7 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import '../../features/cart/data/apis/cart_api_services.dart';
+import '../../features/cart/data/repos/cart_repo.dart';
+import '../../features/cart/logic/cart_cubit.dart';
 import '../../features/home/data/apis/home_api_services.dart';
 import '../../features/home/data/repos/home_repo.dart';
+import '../../features/home/logic/home_cubit.dart';
 import '../../features/login/data/repos/login_repo.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/sign_up/data/repos/signup_repo.dart';
@@ -35,4 +39,10 @@ Future<void> setupGetIt() async {
   // home
   getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt()));
+  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));
+
+  // cart
+  getIt.registerLazySingleton<CartApiServices>(() => CartApiServices(dio));
+  getIt.registerLazySingleton<CartRepo>(() => CartRepo(getIt()));
+  getIt.registerFactory<CartCubit>(() => CartCubit(getIt()));
 }

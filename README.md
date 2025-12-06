@@ -17,6 +17,7 @@ A modern Flutter e-commerce application for accessories shopping with a clean ar
 - **Home Screen** - Browse featured products and categories with infinite scroll pagination
 - **Product Details** - Detailed product information and specifications
 - **Product Catalog** - Comprehensive product listing and browsing
+- **Shopping Cart** - Add products to cart with quantity management and price calculation
 - **Infinite Scroll Pagination** - Seamless product loading as you scroll, optimized for performance and bandwidth
 
 ### Core Features
@@ -25,7 +26,7 @@ A modern Flutter e-commerce application for accessories shopping with a clean ar
 - **Secure Storage** - User tokens and sensitive data protection
 - **Network Caching** - Optimized image loading and caching
 - **Infinite Scroll Pagination** - Efficient data loading with automatic pagination for improved performance
-- **Shimmer Loading** - Beautiful loading animations
+- **Skeleton Loading** - Beautiful skeleton loading animations with Skeletonizer
 - **Custom Splash Screen** - Branded app launch experience
 - **Automatic Session Management** - Intelligent token refresh mechanism that handles expired tokens transparently
 
@@ -112,7 +113,7 @@ build_runner: ^2.9.0 # Code generation runner
 flutter_screenutil: ^5.9.3 # Screen adaptation
 flutter_svg: ^2.2.1 # SVG support
 cached_network_image: ^3.4.1 # Image caching
-shimmer: ^3.0.0 # Loading animations
+skeletonizer: ^1.4.2 # Skeleton loading animations
 
 # Storage & Security
 shared_preferences: ^2.5.3 # Local storage
@@ -213,6 +214,7 @@ The app includes configuration for:
   <img src="screenshots/PRODUCTS_LOADING.png" width="250" alt="Products Loading Light">
   <img src="screenshots/PRODUCTS.png" width="250" alt="Products Light">
   <img src="screenshots/PRODUCT_DETAILS.png" width="250" alt="Product Details Light">
+  <img src="screenshots/CART.png" width="250" alt="Shopping Cart Light">
 </div>
 
 #### Dark Mode
@@ -221,6 +223,7 @@ The app includes configuration for:
   <img src="screenshots/PRODUCTS_LOADING_DARK.png" width="250" alt="Products Loading Dark">
   <img src="screenshots/PRODUCTS_DARK.png" width="250" alt="Products Dark">
   <img src="screenshots/PRODUCT_DETAILS_DARK.png" width="250" alt="Product Details Dark">
+  <img src="screenshots/CART_DARK.png" width="250" alt="Shopping Cart Dark">
 </div>
 
 ### Key Features Showcase
@@ -229,7 +232,8 @@ The app includes configuration for:
 - **🌙 Dark Mode** - Seamless dark mode experience across all screens
 - **🔐 Secure Authentication** - Email verification with OTP
 - **📱 Responsive Layout** - Optimized for all screen sizes
-- **🛍️ Complete Shopping Flow** - From browsing to product details
+- **🛍️ Complete Shopping Flow** - From browsing to product details and cart management
+- **🛒 Shopping Cart** - Intuitive cart with quantity adjustment and real-time price updates
 - **📄 Infinite Scroll Pagination** - Smooth and efficient product loading as you browse
 
 ## 🔧 Configuration
