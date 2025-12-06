@@ -9,12 +9,24 @@ class CartCubit extends Cubit<CartState> {
   final CartRepo _cartRepo;
   CartCubit(this._cartRepo) : super(CartState.initial());
   List<CartItem>? cartItems = [];
+  double totalPrice = 0.0;
+
+  void calculateTotalPrice() {
+    totalPrice = 0.0;
+    if (cartItems != null) {
+      for (var item in cartItems!) {
+        totalPrice += (item.totalPrice);
+      }
+    }
+  }
+
   void getCartItems() async {
     emit(CartState.cartItemsLoading());
     final response = await _cartRepo.getCartItems({});
     response.when(
       success: (cartResponseModel) {
         cartItems = cartResponseModel.items ?? [];
+        calculateTotalPrice();
         emit(CartState.cartItemsSuccess(cartItems));
       },
       failure: (errorHandler) {
@@ -30,6 +42,7 @@ class CartCubit extends Cubit<CartState> {
       success: (_) {
         cartItems?.removeWhere((item) => item.itemId == itemId);
         emit(CartState.cartItemDeleteSuccess());
+        calculateTotalPrice();
         emit(CartState.cartItemsSuccess(cartItems));
       },
       failure: (errorHandler) {
@@ -42,7 +55,6 @@ class CartCubit extends Cubit<CartState> {
     String itemId,
     UpdateItemCountRequestBody updateItemCountRequestBody,
   ) async {
-    
     emit(CartState.cartItemCountUpdating());
     final response = await _cartRepo.updateCartItemCount(
       itemId,
@@ -60,7 +72,14 @@ class CartCubit extends Cubit<CartState> {
           cartItems?.removeAt(index);
         } else if (index != null && index != -1) {
           cartItems?[index].quantity = updateItemCountResponseModel.quantity;
+          cartItems?[index].totalPrice =
+              ((cartItems![index].basePricePerUnit *
+                          updateItemCountResponseModel.quantity) *
+                      100)
+                  .roundToDouble() /
+              100;
         }
+        calculateTotalPrice();
         emit(CartState.cartItemsSuccess(cartItems));
       },
       failure: (errorHandler) {

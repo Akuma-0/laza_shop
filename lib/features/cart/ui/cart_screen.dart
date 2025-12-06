@@ -23,7 +23,7 @@ class CartScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 10.h),
-              CartBlocBuilder(),
+              Expanded(child: CartBlocBuilder()),
             ],
           ),
         ),
