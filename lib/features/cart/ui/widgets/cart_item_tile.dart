@@ -106,12 +106,18 @@ class _CartItemTileState extends State<CartItemTile> {
                           setState(() {
                             isLoading = true;
                           });
-                          context.read<CartCubit>().updateCartItemCount(
-                            widget.cartItem.itemId,
-                            UpdateItemCountRequestBody(
-                              quantity: widget.cartItem.quantity - 1,
-                            ),
-                          );
+                          if (widget.cartItem.quantity == 1) {
+                            context.read<CartCubit>().deleteCartItem(
+                              widget.cartItem.itemId,
+                            );
+                          } else {
+                            context.read<CartCubit>().updateCartItemCount(
+                              widget.cartItem.itemId,
+                              UpdateItemCountRequestBody(
+                                quantity: widget.cartItem.quantity - 1,
+                              ),
+                            );
+                          }
                           setState(() {
                             isLoading = false;
                           });
