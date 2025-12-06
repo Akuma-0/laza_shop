@@ -6,9 +6,9 @@ import '../models/cart_response_model.dart';
 class CartRepo {
   final CartApiServices _apiService;
   CartRepo(this._apiService);
-  Future<ApiResult<CartResponseModel>> getCart() async {
+  Future<ApiResult<CartResponseModel>> getCartItems(Map map) async {
     try {
-      final response = await _apiService.getCart(
+      final response = await _apiService.getCartItems(
         'application/json',
         'application/json',
       );

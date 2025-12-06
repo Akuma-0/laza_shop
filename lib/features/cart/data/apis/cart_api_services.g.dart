@@ -22,7 +22,10 @@ class _CartApiServices implements CartApiServices {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<CartResponseModel> getCart(String contentType, String accept) async {
+  Future<CartResponseModel> getCartItems(
+    String contentType,
+    String accept,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
@@ -55,6 +58,38 @@ class _CartApiServices implements CartApiServices {
       rethrow;
     }
     return _value;
+  }
+
+  @override
+  Future<void> deleteCartItem(
+    String itemId,
+    String contentType,
+    String accept,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': contentType,
+      r'Accept': accept,
+    };
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<void>(
+      Options(
+            method: 'DELETE',
+            headers: _headers,
+            extra: _extra,
+            contentType: contentType,
+          )
+          .compose(
+            _dio.options,
+            'cart/items/${itemId}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

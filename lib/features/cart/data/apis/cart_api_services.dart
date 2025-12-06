@@ -12,7 +12,7 @@ abstract class CartApiServices {
   factory CartApiServices(Dio dio) = _CartApiServices;
 
   @GET( CartApiConstants.cartEP)
-  Future<CartResponseModel> getCart(
+  Future<CartResponseModel> getCartItems(
     @Header('Content-Type') String contentType,
     @Header('Accept') String accept,
   );
