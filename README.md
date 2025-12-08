@@ -26,7 +26,7 @@ A modern Flutter e-commerce application for accessories shopping with a clean ar
 - **Secure Storage** - User tokens and sensitive data protection
 - **Network Caching** - Optimized image loading and caching
 - **Infinite Scroll Pagination** - Efficient data loading with automatic pagination for improved performance
-- **Skeleton Loading** - Beautiful skeleton loading animations with Skeletonizer
+- **Skeleton Loading (Skeletonizer)** - Beautiful shimmer loading animations throughout the app for enhanced UX during data fetching
 - **Custom Splash Screen** - Branded app launch experience
 - **Automatic Session Management** - Intelligent token refresh mechanism that handles expired tokens transparently
 
@@ -214,6 +214,10 @@ The app includes configuration for:
   <img src="screenshots/PRODUCTS_LOADING.png" width="250" alt="Products Loading Light">
   <img src="screenshots/PRODUCTS.png" width="250" alt="Products Light">
   <img src="screenshots/PRODUCT_DETAILS.png" width="250" alt="Product Details Light">
+</div>
+
+<div align="center">
+  <img src="screenshots/CART_LOADING.png" width="250" alt="Cart Loading Light">
   <img src="screenshots/CART.png" width="250" alt="Shopping Cart Light">
 </div>
 
@@ -223,6 +227,10 @@ The app includes configuration for:
   <img src="screenshots/PRODUCTS_LOADING_DARK.png" width="250" alt="Products Loading Dark">
   <img src="screenshots/PRODUCTS_DARK.png" width="250" alt="Products Dark">
   <img src="screenshots/PRODUCT_DETAILS_DARK.png" width="250" alt="Product Details Dark">
+</div>
+
+<div align="center">
+  <img src="screenshots/CART_LOADING_DARK.png" width="250" alt="Cart Loading Dark">
   <img src="screenshots/CART_DARK.png" width="250" alt="Shopping Cart Dark">
 </div>
 
@@ -235,6 +243,7 @@ The app includes configuration for:
 - **🛍️ Complete Shopping Flow** - From browsing to product details and cart management
 - **🛒 Shopping Cart** - Intuitive cart with quantity adjustment and real-time price updates
 - **📄 Infinite Scroll Pagination** - Smooth and efficient product loading as you browse
+- **✨ Skeleton Loading** - Elegant shimmer animations powered by Skeletonizer for products and cart during data loading
 
 ## 🔧 Configuration
 
