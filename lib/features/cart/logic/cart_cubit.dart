@@ -37,26 +37,31 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  void deleteCartItem(String itemId) async {
+  Future<bool> deleteCartItem(String itemId) async {
     emit(CartState.cartItemDeleting());
     final response = await _cartRepo.deleteCartItem(itemId);
+    bool success = false;
     response.when(
       success: (_) {
         cartItems?.removeWhere((item) => item.itemId == itemId);
         emit(CartState.cartItemDeleteSuccess());
         calculateTotalPrice();
         emit(CartState.cartItemsSuccess(cartItems));
+        success = true;
       },
       failure: (errorHandler) {
         emit(CartState.cartItemDeleteError(errorHandler));
+        success = false;
       },
     );
+    return success;
   }
 
-  void updateCartItemCount(
+  Future<bool> updateCartItemCount(
     String itemId,
     UpdateItemCountRequestBody updateItemCountRequestBody,
   ) async {
+    bool success = false;
     emit(CartState.cartItemCountUpdating());
     final response = await _cartRepo.updateCartItemCount(
       itemId,
@@ -83,10 +88,13 @@ class CartCubit extends Cubit<CartState> {
         }
         calculateTotalPrice();
         emit(CartState.cartItemsSuccess(cartItems));
+        success = true;
       },
       failure: (errorHandler) {
         emit(CartState.cartItemCountUpdateError(errorHandler));
+        success = false;
       },
     );
+    return success;
   }
 }

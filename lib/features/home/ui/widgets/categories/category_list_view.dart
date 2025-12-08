@@ -11,7 +11,6 @@ class CategoryListView extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: categories?.length ?? 0,
       itemBuilder: (context, index) {
-        print('Category Image URL: ${categories?[index]?.imageUrl}');
         return CategoryCard(category: categories?[index]);
       },
     );
