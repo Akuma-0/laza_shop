@@ -30,60 +30,58 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  #A build system for Dart code generation and modular compilation
-  build_runner: ^2.9.0
-  # State management
+# --- State Management ---
   flutter_bloc: ^9.1.1
-  # Code generator (mainly used with cubit & retrofit)
-  freezed: ^3.2.3
-  freezed_annotation: ^3.1.0
-  # for dependency injection
+  
+  # --- Dependency Injection ---
   get_it: ^8.2.0
-  # Automatically generate code for converting to and from JSON by annotating Dart classes
-  json_serializable: ^6.11.1
-  json_annotation: ^4.9.0
-  # Networking
+
+  # --- Networking ---
   dio: ^5.9.0
-  retrofit: ^4.7.3
-  retrofit_generator: ^10.0.6
+  retrofit: ^4.7.3 # Annotations/Runtime for Retrofit
   pretty_dio_logger: ^1.4.0
-  # An SVG rendering and widget library for Flutter, which allows painting
+
+  # --- Code Generation Annotations (Runtime) ---
+  freezed_annotation: ^3.1.0 
+  json_annotation: ^4.9.0
+
+  # --- UI & Utilities ---
   flutter_svg: ^2.2.1
-  # for adapting screen and font size.
   flutter_screenutil: ^5.9.3
-  # Flutter library to load and cache network images.
   cached_network_image: ^3.4.1
-  # reading and writing simple key-value pairs
-  shared_preferences: ^2.5.3
-  # provides API to store data in secure storage.
-  flutter_secure_storage: ^9.2.4
-  # A lightweight and blazing fast key-value database written in pure Dart.
-  hive_ce: ^2.15.1
-  # For finding commonly used locations on the filesystem
-  path_provider: ^2.1.5
-  # easy way to add shimmer effect
-  shimmer: ^3.0.0
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  skeletonizer: ^2.1.1
   cupertino_icons: ^1.0.8
-  # For adding a native splash screen to your Flutter application.
-  flutter_native_splash: ^2.4.6
-  # OTP text field
   pinput: ^5.0.2
-  # Firebase
+
+  # --- Local Storage ---
+  shared_preferences: ^2.5.3
+  flutter_secure_storage: ^9.2.4
+  hive_ce: ^2.15.1
+  path_provider: ^2.1.5
+
+  # --- Firebase & Config ---
   firebase_core: ^4.2.0
-  # Environment variables
   flutter_dotenv: ^6.0.0
+
+  # --- Splash Screen ---
+  flutter_native_splash: ^2.4.6
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
+  # --- Build Runner ---
+  # The command tool that runs all generators below
+  build_runner: ^2.9.0
+
+  # --- Code Generators ---
+  # These are ONLY used during development to generate files
+  freezed: ^3.2.3
+  retrofit_generator: ^10.0.6
+  json_serializable: ^6.7.0
+
+  # --- Linters & Tools ---
   flutter_lints: ^5.0.0
   flutter_launcher_icons: "^0.14.4"
 
@@ -91,7 +89,7 @@ flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/images/logo.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21 # android min sdk min:16, default 21
+  min_sdk_android: 21
   adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/images/logo.png"
 # For information on the generic Dart part of this file, see the

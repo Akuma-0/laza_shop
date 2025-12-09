@@ -2,6 +2,16 @@
 
 A modern Flutter e-commerce application for accessories shopping with a clean architecture and beautiful UI design.
 
+## 🎥 Demo Video
+https://github.com/user-attachments/assets/laza-shop-demo.mp4
+
+https://github.com/user-attachments/assets/fd47910c-c6c9-42ed-aa6a-29fd62011831
+
+
+
+
+> **Note:** You can find the demo video in the `screenshots/Laza_shop_demo.mp4` directory.
+
 ## 📱 App Features
 
 ### Authentication
@@ -17,6 +27,7 @@ A modern Flutter e-commerce application for accessories shopping with a clean ar
 - **Home Screen** - Browse featured products and categories with infinite scroll pagination
 - **Product Details** - Detailed product information and specifications
 - **Product Catalog** - Comprehensive product listing and browsing
+- **Shopping Cart** - Add products to cart with quantity management and price calculation
 - **Infinite Scroll Pagination** - Seamless product loading as you scroll, optimized for performance and bandwidth
 
 ### Core Features
@@ -25,7 +36,7 @@ A modern Flutter e-commerce application for accessories shopping with a clean ar
 - **Secure Storage** - User tokens and sensitive data protection
 - **Network Caching** - Optimized image loading and caching
 - **Infinite Scroll Pagination** - Efficient data loading with automatic pagination for improved performance
-- **Shimmer Loading** - Beautiful loading animations
+- **Skeleton Loading (Skeletonizer)** - Beautiful shimmer loading animations throughout the app for enhanced UX during data fetching
 - **Custom Splash Screen** - Branded app launch experience
 - **Automatic Session Management** - Intelligent token refresh mechanism that handles expired tokens transparently
 
@@ -112,7 +123,7 @@ build_runner: ^2.9.0 # Code generation runner
 flutter_screenutil: ^5.9.3 # Screen adaptation
 flutter_svg: ^2.2.1 # SVG support
 cached_network_image: ^3.4.1 # Image caching
-shimmer: ^3.0.0 # Loading animations
+skeletonizer: ^1.4.2 # Skeleton loading animations
 
 # Storage & Security
 shared_preferences: ^2.5.3 # Local storage
@@ -215,6 +226,11 @@ The app includes configuration for:
   <img src="screenshots/PRODUCT_DETAILS.png" width="250" alt="Product Details Light">
 </div>
 
+<div align="center">
+  <img src="screenshots/CART_LOADING.png" width="250" alt="Cart Loading Light">
+  <img src="screenshots/CART.png" width="250" alt="Shopping Cart Light">
+</div>
+
 #### Dark Mode
 
 <div align="center">
@@ -223,14 +239,21 @@ The app includes configuration for:
   <img src="screenshots/PRODUCT_DETAILS_DARK.png" width="250" alt="Product Details Dark">
 </div>
 
+<div align="center">
+  <img src="screenshots/CART_LOADING_DARK.png" width="250" alt="Cart Loading Dark">
+  <img src="screenshots/CART_DARK.png" width="250" alt="Shopping Cart Dark">
+</div>
+
 ### Key Features Showcase
 
 - **🎨 Beautiful UI Design** - Modern and clean interface with light and dark mode support
 - **🌙 Dark Mode** - Seamless dark mode experience across all screens
 - **🔐 Secure Authentication** - Email verification with OTP
 - **📱 Responsive Layout** - Optimized for all screen sizes
-- **🛍️ Complete Shopping Flow** - From browsing to product details
+- **🛍️ Complete Shopping Flow** - From browsing to product details and cart management
+- **🛒 Shopping Cart** - Intuitive cart with quantity adjustment and real-time price updates
 - **📄 Infinite Scroll Pagination** - Smooth and efficient product loading as you browse
+- **✨ Skeleton Loading** - Elegant shimmer animations powered by Skeletonizer for products and cart during data loading
 
 ## 🔧 Configuration
 

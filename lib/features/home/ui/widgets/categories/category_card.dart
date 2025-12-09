@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 40.w,
             height: 40.h,
             child: ClipRRect(
@@ -76,7 +76,7 @@ class CategoryCard extends StatelessWidget {
     }
   }
 
-  Widget _buildErrorWidget(var context) {
+  Widget _buildErrorWidget(BuildContext context) {
     return Icon(
       Icons.image_not_supported,
       color: context.colorScheme.primary,

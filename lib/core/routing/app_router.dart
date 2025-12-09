@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laza_shop/features/cart/logic/cart_cubit.dart';
 import '../../features/cart/ui/cart_screen.dart';
 import '../../features/home/data/models/products_response_model.dart';
 import '../../features/home/logic/home_cubit.dart';
@@ -57,7 +58,7 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => HomeCubit(getIt())
+            create: (context) => getIt<HomeCubit>()
               ..getProducts()
               ..getCategories(),
             child: const HomeScreen(),
@@ -76,7 +77,12 @@ class AppRouter {
         );
       /************************Cart Screen**************************/
       case Routes.cartScreen:
-        return MaterialPageRoute(builder: (_) => const CartScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<CartCubit>()..getCartItems(),
+            child: CartScreen(),
+          ),
+        );
       /*****************************notifications Screen**************************/
       case Routes.notificationsScreen:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());

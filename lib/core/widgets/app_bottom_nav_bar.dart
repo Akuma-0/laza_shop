@@ -30,7 +30,10 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
         elevation: 0,
         onTap: (index) async {
           setState(() {
-            context.pushReplacementNamed(widget.routes[index]);
+            context.pushNamedAndRemoveUntil(
+              widget.routes[index],
+              predicate:(route) => false,
+            );
           });
         },
         items: [

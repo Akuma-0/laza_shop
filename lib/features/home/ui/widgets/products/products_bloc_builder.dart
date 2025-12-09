@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/features/home/ui/widgets/products/products_grid_view.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+import '../../../data/models/products_response_model.dart';
 import '../../../logic/home_cubit.dart';
 import '../../../logic/home_state.dart';
 
@@ -17,15 +19,11 @@ class ProductsBlocBuilder extends StatelessWidget {
           current is ProductsError,
       builder: (context, state) {
         return state.maybeWhen(
-          productsLoading: () =>
-              const Center(child: CircularProgressIndicator()),
-          productsSuccess: (productsList) {
-            return setupSuccess(productsList, context);
-          },
+          productsLoading: () => _buildLoading(),
+          productsSuccess: (productsList) =>
+              setupSuccess(productsList, context),
           productsError: (errorHandler) => setupError(),
-          orElse: () {
-            return const SizedBox.shrink();
-          },
+          orElse: () => _buildLoading(),
         );
       },
     );
@@ -58,4 +56,22 @@ class ProductsBlocBuilder extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildLoading() {
+  return Skeletonizer(
+    enabled: true,
+    child: ProductsGridView(
+      productsList: List.generate(20, (index) {
+        return Product(
+          id: '',
+          name: 'Some Product Name for Loading',
+          price: 99.332,
+          description: '',
+          imageUrl: 'https://aaastriping.ca/wp-content/uploads/2017/01/temp-banner-155x155.jpg',
+        );
+      }),
+      hasNextPage: false,
+    ),
+  );
 }

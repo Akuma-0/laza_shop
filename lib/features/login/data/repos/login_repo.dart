@@ -5,7 +5,7 @@ import '../models/login_request_body.dart';
 import '../models/login_response.dart';
 
 class LoginRepo {
-  final ApiService _apiService;
+  final ApiServices _apiService;
 
   LoginRepo(this._apiService);
 
