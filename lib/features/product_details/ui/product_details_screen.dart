@@ -28,16 +28,19 @@ class ProductDetailsScreen extends StatelessWidget {
                     color: context.colorScheme.secondary,
                     width: double.infinity,
                     height: 390.h,
-                    child: CachedNetworkImage(
-                      imageUrl: product.imageUrl ?? '',
-                      placeholder: (context, url) =>
-                          Image.asset('assets/images/sandy_loading.gif'),
-                      errorWidget: (context, url, error) => Icon(
-                        Icons.image_not_supported,
-                        color: AppColorLight.primaryColor,
-                        size: 120.sp,
+                    child: Hero(
+                      tag: product.id ?? '',
+                      child: CachedNetworkImage(
+                        imageUrl: product.imageUrl ?? '',
+                        placeholder: (context, url) =>
+                            Image.asset('assets/images/sandy_loading.gif'),
+                        errorWidget: (context, url, error) => Icon(
+                          Icons.image_not_supported,
+                          color: AppColorLight.primaryColor,
+                          size: 120.sp,
+                        ),
+                        fit: BoxFit.cover,
                       ),
-                      fit: BoxFit.cover,
                     ),
                   ),
                   Positioned(

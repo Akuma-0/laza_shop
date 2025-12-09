@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 40.w,
             height: 40.h,
             child: ClipRRect(

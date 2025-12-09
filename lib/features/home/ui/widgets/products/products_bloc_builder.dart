@@ -65,10 +65,10 @@ Widget _buildLoading() {
       productsList: List.generate(20, (index) {
         return Product(
           id: '',
-          name: '',
-          price: 0,
+          name: 'Some Product Name for Loading',
+          price: 99.332,
           description: '',
-          imageUrl: '',
+          imageUrl: 'https://aaastriping.ca/wp-content/uploads/2017/01/temp-banner-155x155.jpg',
         );
       }),
       hasNextPage: false,
