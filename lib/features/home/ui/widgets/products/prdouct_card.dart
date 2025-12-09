@@ -35,19 +35,22 @@ class ProductCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15.r),
                       color: context.colorScheme.surfaceContainer,
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl: product?.imageUrl ?? '',
-                      placeholder: (context, url) => Center(
-                        child: Image.asset('assets/images/loading.gif'),
+                    child: Hero(
+                      tag: product?.id ?? '',
+                      child: CachedNetworkImage(
+                        imageUrl: product?.imageUrl ?? '',
+                        placeholder: (context, url) => Center(
+                          child: Image.asset('assets/images/loading.gif'),
+                        ),
+                        fit: BoxFit.cover,
+                        errorWidget: (context, url, error) => Icon(
+                          Icons.image_not_supported,
+                          color: context.colorScheme.primary,
+                          size: 40.sp,
+                        ),
+                        width: 160.w,
+                        height: 203.h,
                       ),
-                      fit: BoxFit.cover,
-                      errorWidget: (context, url, error) => Icon(
-                        Icons.image_not_supported,
-                        color: context.colorScheme.primary,
-                        size: 40.sp,
-                      ),
-                      width: 160.w,
-                      height: 203.h,
                     ),
                   ),
                   Positioned(

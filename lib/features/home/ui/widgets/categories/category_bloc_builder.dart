@@ -27,7 +27,12 @@ class CategoryBlocBuilder extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: List.generate(10, (index) {
                 return CategoryCard(
-                  category: Category(id: '', name: '', imageUrl: ''),
+                  category: Category(
+                    id: '',
+                    name: 'Category name',
+                    imageUrl:
+                        'https://aaastriping.ca/wp-content/uploads/2017/01/temp-banner-155x155.jpg',
+                  ),
                 );
               }),
             ),
