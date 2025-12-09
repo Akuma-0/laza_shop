@@ -2,6 +2,12 @@
 
 A modern Flutter e-commerce application for accessories shopping with a clean architecture and beautiful UI design.
 
+## 🎥 Demo Video
+
+https://github.com/user-attachments/assets/laza-shop-demo.mp4
+
+> **Note:** You can find the demo video in the `screenshots/Laza_shop_demo.mp4` directory.
+
 ## 📱 App Features
 
 ### Authentication
