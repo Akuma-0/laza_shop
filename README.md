@@ -3,12 +3,8 @@
 A modern Flutter e-commerce application for accessories shopping with a clean architecture and beautiful UI design.
 
 ## 🎥 Demo Video
+
 https://github.com/user-attachments/assets/laza-shop-demo.mp4
-
-https://github.com/user-attachments/assets/fd47910c-c6c9-42ed-aa6a-29fd62011831
-
-
-
 
 > **Note:** You can find the demo video in the `screenshots/Laza_shop_demo.mp4` directory.
 
@@ -208,12 +204,22 @@ The app includes configuration for:
   <img src="screenshots/OTP.png" width="250" alt="OTP Light">
 </div>
 
+<div align="center">
+  <img src="screenshots/FORGOT_PASSWORD.png" width="250" alt="Forgot Password Light">
+  <img src="screenshots/RESET_PASSWORD.png" width="250" alt="Reset Password Light">
+</div>
+
 #### Dark Mode
 
 <div align="center">
   <img src="screenshots/LOGIN_DARK.png" width="250" alt="Login Dark">
   <img src="screenshots/SIGNUP_DARK.png" width="250" alt="Sign Up Dark">
   <img src="screenshots/OTP_DARK.png" width="250" alt="OTP Dark">
+</div>
+
+<div align="center">
+  <img src="screenshots/FORGOT_PASSWORD_DARK.png" width="250" alt="Forgot Password Dark">
+  <img src="screenshots/RESET_PASSWORD_DARK.png" width="250" alt="Reset Password Dark">
 </div>
 
 ### Shopping Experience

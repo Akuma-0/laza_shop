@@ -3,6 +3,10 @@ import 'package:get_it/get_it.dart';
 import '../../features/cart/data/apis/cart_api_services.dart';
 import '../../features/cart/data/repos/cart_repo.dart';
 import '../../features/cart/logic/cart_cubit.dart';
+import '../../features/forgot_password/data/apis/forgot_password_api_services.dart';
+import '../../features/forgot_password/data/repos/forgot_password_repo.dart';
+import '../../features/forgot_password/logic/forgot_password/forgot_password_cubit.dart';
+import '../../features/forgot_password/logic/reset_password/reset_password_cubit.dart';
 import '../../features/home/data/apis/home_api_services.dart';
 import '../../features/home/data/repos/home_repo.dart';
 import '../../features/home/logic/home_cubit.dart';
@@ -27,6 +31,14 @@ Future<void> setupGetIt() async {
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
+
+  // forgot password
+  getIt.registerLazySingleton <ForgotPasswordApiServices>(() => ForgotPasswordApiServices(dio));
+  getIt.registerLazySingleton<ForgotPasswordRepo>(() => ForgotPasswordRepo(getIt()));
+  getIt.registerFactory<ForgotPasswordCubit>(() => ForgotPasswordCubit(getIt()));
+
+  // reset password
+  getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(getIt()));
 
   // signup
   getIt.registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()));
