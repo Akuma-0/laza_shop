@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza_shop/core/helpers/extensions.dart';
-
+import '../../../../core/helpers/extensions.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_color/app_color_light.dart';
 import '../../../../core/themes/text_styles.dart';
@@ -36,7 +33,6 @@ class SignupBlocListener extends StatelessWidget {
               Routes.confirmEmailScreen,
               arguments: context.read<SignupCubit>().emailController.text,
             );
-            log(context.read<SignupCubit>().emailController.text);
           },
           error: (error) {
             setupErrorState(context, error);

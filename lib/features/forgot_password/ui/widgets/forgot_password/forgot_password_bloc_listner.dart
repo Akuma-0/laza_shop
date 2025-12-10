@@ -1,36 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/helpers/extensions.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/themes/text_styles.dart';
-import '../../logic/login_cubit.dart';
-import '../../logic/login_state.dart';
+import 'package:laza_shop/core/helpers/extensions.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/themes/text_styles.dart';
+import '../../../logic/forgot_password/forgot_password_cubit.dart';
+import '../../../logic/forgot_password/forgot_password_state.dart';
 
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class ForgotPasswordBlocListner extends StatelessWidget {
+  const ForgotPasswordBlocListner({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
-      listenWhen: (previous, current) =>
-          current is Loading || current is Success || current is Error,
+    return BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
+      listenWhen: (previous, current) {
+        return current is Loading || current is Success || current is Error;
+      },
       listener: (context, state) {
         state.whenOrNull(
           loading: () {
             showDialog(
               context: context,
-              builder: (context) =>Center(
+              builder: (context) => Center(
                 child: CircularProgressIndicator(
                   color: context.colorScheme.primary,
                 ),
               ),
             );
           },
-          success: (loginResponse) {
-            context.pushNamedAndRemoveUntil(
-              Routes.homeScreen,
-              predicate: (Route<dynamic> route) => false,
-            );
+          success: (forgotPasswordSuccess) {
+            context.pop();
+            final email = context
+                .read<ForgotPasswordCubit>()
+                .emailController
+                .text;
+            context.pushNamed(Routes.resetPasswordScreen, arguments: email);
           },
           error: (error) {
             setupErrorState(context, error);

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza_shop/core/helpers/extensions.dart';
 import 'package:laza_shop/core/widgets/app_bottom_bar.dart';
 import 'package:laza_shop/features/login/ui/widgets/login_bloc_listner.dart';
+import '../../../core/routing/routes.dart';
 import '../../../core/themes/text_styles.dart';
 import '../logic/login_cubit.dart';
 import 'widgets/login_form.dart';
@@ -34,12 +35,16 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: 50.0.h),
                 LoginForm(),
                 SizedBox(height: 10.h),
-                //ToDo: Forgot Password Screen
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyles.font15W400.copyWith(color: Colors.red),
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pushNamed(Routes.forgotPasswordScreen);
+                    },
+                    child: Text(
+                      'Forgot Password?',
+                      style: TextStyles.font15W400.copyWith(color: Colors.red),
+                    ),
                   ),
                 ),
                 SizedBox(height: 40.0.h),
@@ -59,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              context.pushNamed('/signUpScreen');
+                              context.pushNamed(Routes.signUpScreen);
                             },
                         ),
                       ],

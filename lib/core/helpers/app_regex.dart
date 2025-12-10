@@ -30,4 +30,8 @@ class AppRegex {
   static bool hasMinLength(String password) {
     return RegExp(r'^(?=.{8,})').hasMatch(password);
   }
+  
+  static bool isOtpValid(String otp) {
+    return RegExp(r'^\d{6}$').hasMatch(otp);
+  }
 }

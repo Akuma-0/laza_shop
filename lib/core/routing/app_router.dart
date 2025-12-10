@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_shop/features/cart/logic/cart_cubit.dart';
+import 'package:laza_shop/features/forgot_password/logic/forgot_password/forgot_password_cubit.dart';
+import 'package:laza_shop/features/forgot_password/logic/reset_password/reset_password_cubit.dart';
 import '../../features/cart/ui/cart_screen.dart';
+import '../../features/forgot_password/ui/forgot_password_screen.dart';
+import '../../features/forgot_password/ui/reset_password_screen.dart';
 import '../../features/home/data/models/products_response_model.dart';
 import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/home_screen.dart';
@@ -31,6 +35,27 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => getIt<LoginCubit>(),
             child: const LoginScreen(),
+          ),
+        );
+      /**************************forgot password screen***********************/
+      case Routes.forgotPasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<ForgotPasswordCubit>(),
+            child: const ForgotPasswordScreen(),
+          ),
+        );
+      /**************************reset password screen***********************/
+      case Routes.resetPasswordScreen:
+        final email = arguments as String?;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<ResetPasswordCubit>(),
+            child: const ResetPasswordScreen(),
+          ),
+          settings: RouteSettings(
+            name: Routes.resetPasswordScreen,
+            arguments: email,
           ),
         );
       /*****************************sign up screen**************************/
