@@ -16,6 +16,8 @@ https://github.com/user-attachments/assets/laza-shop-demo.mp4
 - **User Registration** - Sign up with email verification
 - **User Login** - Secure authentication with token management
 - **Email Verification** - OTP-based email confirmation system
+- **Forgot Password** - Request password reset via email
+- **Reset Password** - Secure password reset with OTP verification
 - **Automatic Token Refresh** - Seamless token renewal using refresh tokens for uninterrupted user sessions
 
 ### Shopping Experience
